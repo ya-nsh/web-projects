@@ -24,9 +24,10 @@ body {
 .progress-container {
   display: flex;
   justify-content: space-between;
-  margin: 10px 10px 60px 10px;
+  position: relative;
+  margin: 10px 10px 30px 10px;
   max-width: 100%;
-  width: 500px;
+  width: 350px;
 }
 
 .progress-container::before {
@@ -34,8 +35,8 @@ body {
   content: '';
   background-color: var(--line-border-empty);
   position: absolute;
-  transform: translateY(-100%);
-  top: 44%;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   height: 4px;
   width: 100%;
@@ -45,9 +46,10 @@ body {
 .progress {
   background-color: var(--line-border-fill);
   position: absolute;
-  transform: translateY(-50%);
-  top: 46%;
+  top: 50%;
   left: 0;
+  transform: translateY(50%);
+
   height: 4px;
   width: 0%;
   z-index: -1;
