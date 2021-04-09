@@ -16,4 +16,4 @@ const assignEvents = (panel) => {
 
 allPanels.forEach(assignEvents);
 
-// Gradients
+ 
