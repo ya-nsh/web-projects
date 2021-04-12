@@ -91,12 +91,12 @@ const createUsernames = (accs) => {
 
 createUsernames(accounts);
 
-const calcPrintBalance = (movements) => {
+const calcDisplayBalance = (movements) => {
   console.log(movements);
   const balance = movements.reduce((acc, curr) => acc + curr, 0);
   console.log(balance);
   console.log(labelBalance.textContent);
-  labelBalance.textContent = balance;
+  labelBalance.textContent = `${balance}€`;
 };
 
 // console.log(account1.movements);
