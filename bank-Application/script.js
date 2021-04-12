@@ -101,7 +101,7 @@ const calcDisplayBalance = (movements) => {
 
 // console.log(account1.movements);
 
-calcPrintBalance(account1.movements);
+calcDisplayBalance(account1.movements);
 
 // const currencies = new Map([
 //   ['USD', 'United States dollar'],
@@ -110,5 +110,12 @@ calcPrintBalance(account1.movements);
 // ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// let ele = movements[0];
+// const max = movements.reduce((acc, curr) => {
+//   if (curr > ele) {
+//     ele = curr;
+//   }
+// });
 
+// console.log(ele);
 // console.log('object');
