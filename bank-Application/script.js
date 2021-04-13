@@ -168,6 +168,21 @@ btnTransfer.addEventListener('click', (e) => {
   }
 });
 
+btnClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    accounts.splice(
+      accounts.findIndex((ele) => ele.username === currentAccount.username),
+      1
+    );
+    containerApp.style.opacity = 0;
+    labelWelcome.textContent = 'Log in to get started';
+  }
+});
+
 // console.log(account1.movements);
 
 // calcDisplayBalance(account1.movements);
