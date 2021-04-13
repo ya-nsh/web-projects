@@ -77,8 +77,6 @@ const displayMovements = (movements) => {
 
 displayMovements(account1.movements);
 
-const user = 'Steven Thomas Williams';
-
 const createUsernames = (accs) => {
   accs.forEach((acc) => {
     acc.username = acc.owner
@@ -99,9 +97,34 @@ const calcDisplayBalance = (movements) => {
   labelBalance.textContent = `${balance}€`;
 };
 
+const calcDisplaySummary = (movements) => {
+  const incomes = movements
+    .filter((value) => value > 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outcomes = movements
+    .filter((value) => value < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+  // Assume interest is 1.2%
+  const interest = movements
+    .filter((value) => value > 0)
+    .map((item) => (item * 1.2) / 100)
+    .filter((interest) => interest >= 1)
+    .reduce((acc, val) => acc + val);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
+console.log(accounts);
+
 // console.log(account1.movements);
 
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 // const currencies = new Map([
 //   ['USD', 'United States dollar'],
@@ -109,13 +132,19 @@ calcDisplayBalance(account1.movements);
 //   ['GBP', 'Pound sterling']
 // ]);
 
+// Lectures
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// let ele = movements[0];
-// const max = movements.reduce((acc, curr) => {
-//   if (curr > ele) {
-//     ele = curr;
+
+// We always have to return accumulator in the next iteration.
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) {
+//     return acc;
+//   } else {
+//     return mov;
 //   }
-// });
+// }, movements[0]);
+
+// console.log(max);
 
 // console.log(ele);
 // console.log('object');
