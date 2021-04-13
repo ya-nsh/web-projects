@@ -92,28 +92,27 @@ const calcDisplayBalance = (movements) => {
   labelBalance.textContent = `${balance}€`;
 };
 
-const calcDisplaySummary = (movements) => {
-  const incomes = movements
+const calcDisplaySummary = (acc) => {
+  const incomes = acc.movements
     .filter((value) => value > 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   labelSumIn.textContent = `${incomes}€`;
 
-  const outcomes = movements
+  const outcomes = acc.movements
     .filter((value) => value < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
   // Assume interest is 1.2%
-  const interest = movements
+  const interest = acc.movements
     .filter((value) => value > 0)
-    .map((item) => (item * 1.2) / 100)
+    .map((item) => (item * acc.interestRate) / 100)
     .filter((interest) => interest >= 1)
     .reduce((acc, val) => acc + val);
 
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
 
 let currentAccount;
 
@@ -133,7 +132,12 @@ btnLogin.addEventListener('click', (e) => {
 
     displayMovements(currentAccount.movements);
     calcDisplayBalance(currentAccount.movements);
-    calcDisplaySummary(currentAccount.movements);
+    calcDisplaySummary(currentAccount);
+
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+
+    inputLoginPin.blur();
   }
 });
 
