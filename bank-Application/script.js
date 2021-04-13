@@ -120,7 +120,26 @@ const calcDisplaySummary = (movements) => {
 };
 calcDisplaySummary(account1.movements);
 
-console.log(accounts);
+let currentAccount;
+
+btnLogin.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputLoginUsername.value
+  );
+
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('YESSS');
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+
+    containerApp.style.opacity = 100;
+  }
+});
 
 // console.log(account1.movements);
 
