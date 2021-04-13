@@ -75,8 +75,6 @@ const displayMovements = (movements) => {
   });
 };
 
-displayMovements(account1.movements);
-
 const createUsernames = (accs) => {
   accs.forEach((acc) => {
     acc.username = acc.owner
@@ -90,10 +88,7 @@ const createUsernames = (accs) => {
 createUsernames(accounts);
 
 const calcDisplayBalance = (movements) => {
-  console.log(movements);
   const balance = movements.reduce((acc, curr) => acc + curr, 0);
-  console.log(balance);
-  console.log(labelBalance.textContent);
   labelBalance.textContent = `${balance}€`;
 };
 
@@ -129,15 +124,16 @@ btnLogin.addEventListener('click', (e) => {
     (acc) => acc.username === inputLoginUsername.value
   );
 
-  console.log(currentAccount);
-
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log('YESSS');
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
 
     containerApp.style.opacity = 100;
+
+    displayMovements(currentAccount.movements);
+    calcDisplayBalance(currentAccount.movements);
+    calcDisplaySummary(currentAccount.movements);
   }
 });
 
