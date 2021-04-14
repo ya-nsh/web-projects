@@ -201,29 +201,9 @@ btnClose.addEventListener('click', (e) => {
   inputClosePin.value = '';
 });
 
-// console.log(account1.movements);
+const fullBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, val) => acc + val);
 
-// calcDisplayBalance(account1.movements);
-
-// const currencies = new Map([
-//   ['USD', 'United States dollar'],
-//   ['EUR', 'Euro'],
-//   ['GBP', 'Pound sterling']
-// ]);
-
-// Lectures
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-// We always have to return accumulator in the next iteration.
-// const max = movements.reduce((acc, mov) => {
-//   if (acc > mov) {
-//     return acc;
-//   } else {
-//     return mov;
-//   }
-// }, movements[0]);
-
-// console.log(max);
-
-// console.log(ele);
-// console.log('object');
+console.log(fullBalance);
