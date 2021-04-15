@@ -69,19 +69,22 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = (movements, sort = false) => {
+const displayMovements = (acc, sort = false) => {
   containerMovements.innerHTML = '';
 
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   movs.forEach((mov, index) => {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-
+    const date = new Date(acc.movementsDates[index]);
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
+          <div class="movements__date">${displayDate}</div>
           <div class="movements__value">${mov.toFixed(2)}</div>
         </div>
     `;
@@ -131,7 +134,7 @@ const calcDisplaySummary = (acc) => {
 };
 
 const updateUI = (currentAccount) => {
-  displayMovements(currentAccount.movements);
+  displayMovements(currentAccount);
   calcDisplayBalance(currentAccount);
   calcDisplaySummary(currentAccount);
 };
@@ -241,7 +244,7 @@ const fullBalance = accounts
 let sortChecker = false;
 btnSort.addEventListener('click', (e) => {
   e.preventDefault();
-  displayMovements(currentAccount.movements, !sortChecker);
+  displayMovements(currentAccount, !sortChecker);
   sortChecker = !sortChecker;
 });
 
