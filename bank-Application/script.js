@@ -178,6 +178,16 @@ btnLogin.addEventListener('click', (e) => {
 
     containerApp.style.opacity = 100;
 
+    const now = new Date();
+    const day = `${now.getDate()}`.padStart(2, '0');
+    const month = `${now.getMonth() + 1}`.padStart(2, '0');
+    const year = now.getFullYear();
+
+    const hour = now.getHours();
+    const min = `${now.getMinutes()}`.padStart(2, '0');
+
+    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+
     updateUI(currentAccount);
 
     inputLoginUsername.value = '';
@@ -206,6 +216,9 @@ btnTransfer.addEventListener('click', (e) => {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    currentAccount.movementsDates.push(new Date());
+    receiverAcc.movementsDates.push(new Date());
+
     updateUI(currentAccount);
   }
 });
@@ -220,9 +233,10 @@ btnLoan.addEventListener('click', (e) => {
     currentAccount.movements.some((mov) => mov >= loanAmount * 0.1)
   ) {
     currentAccount.movements.push(loanAmount);
+    currentAccount.movementsDates.push(new Date());
     updateUI(currentAccount);
-    inputLoanAmount.value = '';
   }
+  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', (e) => {
