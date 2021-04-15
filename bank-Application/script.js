@@ -82,7 +82,7 @@ const displayMovements = (movements, sort = false) => {
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-          <div class="movements__value">${mov}</div>
+          <div class="movements__value">${mov.toFixed(2)}</div>
         </div>
     `;
 
@@ -105,7 +105,7 @@ createUsernames(accounts);
 const calcDisplayBalance = (acc) => {
   acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
 
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = (acc) => {
@@ -113,13 +113,13 @@ const calcDisplaySummary = (acc) => {
     .filter((value) => value > 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const outcomes = acc.movements
     .filter((value) => value < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+  labelSumOut.textContent = `${Math.abs(outcomes).toFixed(2)}€`;
   // Assume interest is 1.2%
   const interest = acc.movements
     .filter((value) => value > 0)
@@ -127,7 +127,7 @@ const calcDisplaySummary = (acc) => {
     .filter((interest) => interest >= 1)
     .reduce((acc, val) => acc + val);
 
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const updateUI = (currentAccount) => {
@@ -186,7 +186,7 @@ btnTransfer.addEventListener('click', (e) => {
 btnLoan.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const loanAmount = +inputLoanAmount.value;
+  const loanAmount = Math.floor(inputLoanAmount.value);
 
   if (
     loanAmount > 0 &&
