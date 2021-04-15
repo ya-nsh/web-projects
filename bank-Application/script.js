@@ -192,14 +192,38 @@ const updateUI = (currentAccount) => {
   calcDisplaySummary(currentAccount);
 };
 
+const initLogOutTimer = () => {
+  const tick = () => {
+    const min = `${Math.floor(sessionTime / 60)}`.padStart(2, 0);
+    const sec = `${sessionTime % 60}`.padStart(2, 0);
 
-let currentAccount;
+    labelTimer.textContent = `${min}:${sec}`;
 
-// TESTING LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
-//
+    if (sessionTime == 0) {
+      clearInterval(sessionTimer);
+
+      labelWelcome.textContent = 'Log in to get started';
+
+      containerApp.style.opacity = 0;
+    }
+    sessionTime--;
+  };
+
+  let sessionTime = 180;
+
+  tick();
+  const sessionTimer = setInterval(tick, 1000);
+
+  return sessionTimer;
+};
+
+let currentAccount, timer;
+
+// // TESTING LOGGED IN
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
+// //
 
 const now = new Date();
 const day = `${now.getDate()}`.padStart(2, '0');
@@ -254,6 +278,10 @@ btnLogin.addEventListener('click', (e) => {
     inputLoginUsername.value = '';
     inputLoginPin.value = '';
 
+    if (timer) {
+      clearInterval(timer);
+    }
+    timer = initLogOutTimer();
     inputLoginPin.blur();
   }
 });
@@ -281,6 +309,9 @@ btnTransfer.addEventListener('click', (e) => {
     receiverAcc.movementsDates.push(new Date());
 
     updateUI(currentAccount);
+
+    clearInterval(timer);
+    timer = initLogOutTimer();
   }
 });
 
@@ -297,6 +328,8 @@ btnLoan.addEventListener('click', (e) => {
       currentAccount.movements.push(loanAmount);
       currentAccount.movementsDates.push(new Date());
       updateUI(currentAccount);
+      clearInterval(timer);
+      timer = initLogOutTimer();
     }, 3000);
   }
   inputLoanAmount.value = '';
@@ -332,21 +365,4 @@ btnSort.addEventListener('click', (e) => {
   sortChecker = !sortChecker;
 });
 
-const num = 3884764.23;
-
-console.log('US: ', new Intl.NumberFormat('en-US').format(num));
-console.log('US: ', new Intl.NumberFormat('en-IN').format(num));
-
-const options2 = {
-  style: 'unit',
-  unit: 'mile-per-hour'
-};
-
-console.log('US: ', new Intl.NumberFormat('en-US', options2).format(num));
-console.log('IN: ', new Intl.NumberFormat('en-IN', options2).format(num));
-
-// setInterval
-setInterval(function () {
-  const now = new Date();
-  console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
-}, 1000);
+ 
