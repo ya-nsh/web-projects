@@ -137,6 +137,13 @@ const updateUI = (currentAccount) => {
 };
 
 let currentAccount;
+
+// TESTING LOGGED IN
+currentAccount = account1;
+updateUI(currentAccount);
+containerApp.style.opacity = 100;
+//
+
 btnLogin.addEventListener('click', (e) => {
   e.preventDefault();
 
@@ -227,3 +234,10 @@ btnSort.addEventListener('click', (e) => {
   displayMovements(currentAccount.movements, !sortChecker);
   sortChecker = !sortChecker;
 });
+
+// console.log(new Date(account1.movementsDates[0]));
+
+const today = new Date();
+console.log(today);
+today.setHours(23);
+console.log(today);
