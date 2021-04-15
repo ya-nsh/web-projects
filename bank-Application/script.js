@@ -192,6 +192,7 @@ const updateUI = (currentAccount) => {
   calcDisplaySummary(currentAccount);
 };
 
+
 let currentAccount;
 
 // TESTING LOGGED IN
@@ -292,9 +293,11 @@ btnLoan.addEventListener('click', (e) => {
     loanAmount > 0 &&
     currentAccount.movements.some((mov) => mov >= loanAmount * 0.1)
   ) {
-    currentAccount.movements.push(loanAmount);
-    currentAccount.movementsDates.push(new Date());
-    updateUI(currentAccount);
+    setTimeout(function () {
+      currentAccount.movements.push(loanAmount);
+      currentAccount.movementsDates.push(new Date());
+      updateUI(currentAccount);
+    }, 3000);
   }
   inputLoanAmount.value = '';
 });
@@ -341,3 +344,9 @@ const options2 = {
 
 console.log('US: ', new Intl.NumberFormat('en-US', options2).format(num));
 console.log('IN: ', new Intl.NumberFormat('en-IN', options2).format(num));
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+}, 1000);
