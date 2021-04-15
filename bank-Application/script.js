@@ -93,6 +93,13 @@ const dateFormat = (date, locale) => {
   return new Intl.DateTimeFormat(locale).format(date);
 };
 
+const currencyFormat = (value, locale, currency) => {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency
+  }).format(value);
+};
+
 const displayMovements = (acc, sort = false) => {
   containerMovements.innerHTML = '';
 
@@ -106,13 +113,20 @@ const displayMovements = (acc, sort = false) => {
     const date = new Date(acc.movementsDates[index]);
     const displayDate = dateFormat(date, acc.locale);
 
+    // const formattedMov = new Intl.NumberFormat(acc.locale, {
+    //   style: 'currency',
+    //   currency: acc.currency
+    // }).format(mov);
+
+    const formattedMov = currencyFormat(mov, acc.locale, acc.currency);
+
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
           <div class="movements__date">${displayDate}</div>
-          <div class="movements__value">${mov.toFixed(2)}</div>
+          <div class="movements__value">${formattedMov}</div>
         </div>
     `;
 
@@ -134,8 +148,11 @@ createUsernames(accounts);
 
 const calcDisplayBalance = (acc) => {
   acc.balance = acc.movements.reduce((acc, curr) => acc + curr, 0);
-
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  labelBalance.textContent = currencyFormat(
+    acc.balance,
+    acc.locale,
+    acc.currency
+  );
 };
 
 const calcDisplaySummary = (acc) => {
@@ -143,13 +160,18 @@ const calcDisplaySummary = (acc) => {
     .filter((value) => value > 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = currencyFormat(incomes, acc.locale, acc.currency);
 
   const outcomes = acc.movements
     .filter((value) => value < 0)
     .reduce((acc, curr) => acc + curr, 0);
 
-  labelSumOut.textContent = `${Math.abs(outcomes).toFixed(2)}€`;
+  labelSumOut.textContent = currencyFormat(
+    Math.abs(outcomes),
+    acc.locale,
+    acc.currency
+  );
+
   // Assume interest is 1.2%
   const interest = acc.movements
     .filter((value) => value > 0)
@@ -157,7 +179,11 @@ const calcDisplaySummary = (acc) => {
     .filter((interest) => interest >= 1)
     .reduce((acc, val) => acc + val);
 
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = currencyFormat(
+    interest,
+    acc.locale,
+    acc.currency
+  );
 };
 
 const updateUI = (currentAccount) => {
@@ -302,3 +328,16 @@ btnSort.addEventListener('click', (e) => {
   displayMovements(currentAccount, !sortChecker);
   sortChecker = !sortChecker;
 });
+
+const num = 3884764.23;
+
+console.log('US: ', new Intl.NumberFormat('en-US').format(num));
+console.log('US: ', new Intl.NumberFormat('en-IN').format(num));
+
+const options2 = {
+  style: 'unit',
+  unit: 'mile-per-hour'
+};
+
+console.log('US: ', new Intl.NumberFormat('en-US', options2).format(num));
+console.log('IN: ', new Intl.NumberFormat('en-IN', options2).format(num));
