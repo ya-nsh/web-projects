@@ -84,8 +84,6 @@ const dateFormat = (date, locale) => {
     return `${daysPassed} days ago`;
   }
 
-  
-
   return new Intl.DateTimeFormat(locale).format(date);
 };
 
@@ -108,11 +106,6 @@ const displayMovements = (acc, sort = false) => {
 
     const date = new Date(acc.movementsDates[index]);
     const displayDate = dateFormat(date, acc.locale);
-
-    // const formattedMov = new Intl.NumberFormat(acc.locale, {
-    //   style: 'currency',
-    //   currency: acc.currency
-    // }).format(mov);
 
     const formattedMov = currencyFormat(mov, acc.locale, acc.currency);
 
@@ -168,7 +161,7 @@ const calcDisplaySummary = (acc) => {
     acc.currency
   );
 
-  // Assume interest is 1.2%
+  // Assume interest is at a rate of 1.2%
   const interest = acc.movements
     .filter((value) => value > 0)
     .map((item) => (item * acc.interestRate) / 100)
