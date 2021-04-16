@@ -1,8 +1,7 @@
 'use strict';
 
-// Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'John S',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -18,11 +17,11 @@ const account1 = {
     '2020-07-12T10:51:36.790Z'
   ],
   currency: 'EUR',
-  locale: 'pt-PT' // de-DE
+  locale: 'pt-PT'
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'Jamie Dennis',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
@@ -364,6 +363,3 @@ btnSort.addEventListener('click', (e) => {
   displayMovements(currentAccount, !sortChecker);
   sortChecker = !sortChecker;
 });
-
- 
-
