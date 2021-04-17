@@ -32,10 +32,3 @@ document.addEventListener('keydown', function (e) {
 
 // ---------------------------------------------------------
 
-
-// To apply CSS to the entire page, use documentElement
-console.log(document.documentElement);
-
-// For head and body
-console.log(document.head);
-console.log(document.body);
