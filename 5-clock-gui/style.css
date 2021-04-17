@@ -1,5 +1,5 @@
 html {
-  background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+  background-color: rgb(233, 28, 28);
   background-size: cover;
   font-family: 'helvetica neue';
   text-align: center;
@@ -40,4 +40,7 @@ body {
   background: black;
   position: absolute;
   top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.5s;
 }
