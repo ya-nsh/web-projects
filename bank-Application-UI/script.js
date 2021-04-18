@@ -33,28 +33,19 @@ document.addEventListener('keydown', function (e) {
 // ---------------------------------------------------------
 
 const header = document.querySelector('.header');
-// .insertAdjacentHTML -> creating HTML elements. Prefer this the most.
 
-// Creating and inserting a DOM element.
-const message = document.createElement('div'); //returns a DOM element
+const message = document.createElement('div');
 message.classList.add('cookie-message');
 
 message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
 
-// header.prepend(message);
 header.append(message);
 
-// header.prepend(message.cloneNode(true));
-
-// header.after(message); //inserts message after header i.e as a sibling
-
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-  // message.remove();
-
   message.parentElement.removeChild(message);
 });
 
-// =============================================================
+// ===============================================================
 
 // Styles
 
