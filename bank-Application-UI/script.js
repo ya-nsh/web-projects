@@ -39,11 +39,26 @@ const header = document.querySelector('.header');
 const message = document.createElement('div'); //returns a DOM element
 message.classList.add('cookie-message'); //creating a class.
 
-// We can use either textContent or innerHTML to read and set content.
-// message.textContent = 'Cookies are useful for analytics.'; //adding text to it.
-message.innerHTML = 
-`Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
-
-// To put the above newly created DOM onto the page, insert it manually
+ 
+message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
+ 
+ 
 header.prepend(message);
+ 
 console.log(header);
+ 
+header.prepend(message);
+header.append(message);
+
+ 
+header.prepend(message.cloneNode(true));
+
+ 
+header.after(message); //inserts message after header i.e as a sibling
+
+ 
+document.querySelector('.btn--close-cookie').addEventListener('click', () => {
+  // message.remove();
+
+  message.parentElement.removeChild(message);
+});
