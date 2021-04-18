@@ -62,4 +62,12 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
 message.style.backgroundColor = 'black';
 message.style.width = '110%';
 
-// To get all styles associated with an element, use getComputedStyle
+// To get all styles associated with an element, use getComputedStyle. It contains all properties with all of the values
+// console.log(getComputedStyle(message)) //huge content
+
+console.log(getComputedStyle(message).color); //returns a string
+console.log(getComputedStyle(message).height);
+// Increasing its height
+// Note that to get float value from a string, use parseFloat
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 40 + 'px';
