@@ -37,28 +37,29 @@ const header = document.querySelector('.header');
 
 // Creating and inserting a DOM element.
 const message = document.createElement('div'); //returns a DOM element
-message.classList.add('cookie-message'); //creating a class.
+message.classList.add('cookie-message');
 
- 
 message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
- 
- 
-header.prepend(message);
- 
-console.log(header);
- 
-header.prepend(message);
+
+// header.prepend(message);
 header.append(message);
 
- 
-header.prepend(message.cloneNode(true));
+// header.prepend(message.cloneNode(true));
 
- 
-header.after(message); //inserts message after header i.e as a sibling
+// header.after(message); //inserts message after header i.e as a sibling
 
- 
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   // message.remove();
 
   message.parentElement.removeChild(message);
 });
+
+// =============================================================
+
+// Styles
+
+// Styles set directly here in the DOM are set as inline styles.
+message.style.backgroundColor = 'black';
+message.style.width = '110%';
+
+// To get all styles associated with an element, use getComputedStyle
