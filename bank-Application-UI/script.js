@@ -30,8 +30,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// ---------------------------------------------------------
-
 const header = document.querySelector('.header');
 
 const message = document.createElement('div');
