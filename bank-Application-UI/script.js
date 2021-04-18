@@ -32,3 +32,14 @@ document.addEventListener('keydown', function (e) {
 
 // ---------------------------------------------------------
 
+// .insertAdjacentHTML -> creating HTML elements. Prefer this the most.
+
+// Creating and inserting a DOM element.
+const message = document.createElement('div'); //returns a DOM element
+message.classList.add('cookie-message'); //creating a class.
+
+// We can use either textContent or innerHTML to read and set content.
+// message.textContent = 'Cookies are useful for analytics.'; //adding text to it.
+message.innerHTML = `Cookies are useful for analytics. <button class = btn btn--close-cookie>Got it!</button>`;
+
+// To put the above newly created DOM onto the page, insert it manually
