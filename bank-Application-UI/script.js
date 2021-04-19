@@ -71,25 +71,7 @@ message.style.height =
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
-// Older way
+// Modern way
 btnScrollTo.addEventListener('click', e => {
-  // getting coordinates of the element to scroll to.
-  const s1coodinates = section1.getBoundingClientRect();
-  console.log(s1coodinates);
-
-  console.log('Current scroll (X, Y)', window.pageXOffset, window.pageYOffset);
-
-  // Scrolling
-  // window.scrollTo(
-  //   s1coodinates.left + window.pageXOffset,
-  //   s1coodinates.top + window.pageYOffset
-  // );
-  // To add smooth scrolling, instead of 1 argument like above, pass in an object to scrollTo.
-  window.scrollTo({
-    left: s1coodinates.left + window.pageXOffset,
-    top: s1coodinates.top + window.pageYOffset,
-    behavior: 'smooth',
-  });
-
-  // So, to implement smooth scrolling, we need to specify an object with left, top and behavior properties
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
