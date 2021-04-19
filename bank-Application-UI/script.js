@@ -51,12 +51,18 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
 message.style.backgroundColor = 'black';
 message.style.width = '110%';
 
-// To get all styles associated with an element, use getComputedStyle. It contains all properties with all of the values
-// console.log(getComputedStyle(message)) //huge content
-
-console.log(getComputedStyle(message).color); //returns a string
-console.log(getComputedStyle(message).height);
-// Increasing its height
-// Note that to get float value from a string, use parseFloat
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height) + 40 + 'px';
+
+// Attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// console.log(logo.src); //returns the absolute URL. to get relative URL, use getAttribute
+// console.log(logo.className); //to get class.
+// // They can also be set like -
+// logo.alt = 'Minimalist logo';
+// console.log(logo.alt);
+
+// logo.setAttribute('company', 'Bank'); //creates a new attribute of company with a value fo Bank
+
+console.log(logo.dataset.versionNumber);
