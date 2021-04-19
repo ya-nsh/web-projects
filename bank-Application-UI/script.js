@@ -65,4 +65,17 @@ message.style.height =
 
 // logo.setAttribute('company', 'Bank'); //creates a new attribute of company with a value fo Bank
 
-console.log(logo.dataset.versionNumber);
+// console.log(logo.dataset.versionNumber);
+
+//Smooth Scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+// Older way
+btnScrollTo.addEventListener('click', e => {
+  // getting coordinates of the element to scroll to.
+  const s1coodinates = section1.getBoundingClientRect();
+  console.log(s1coodinates);
+
+  console.log('Current scroll (X, Y)', window.pageXOffset, window.pageYOffset);
+});
