@@ -79,12 +79,19 @@ btnScrollTo.addEventListener('click', e => {
 const h1 = document.querySelector('h1');
 
 // Say, for mouseenter
-h1.onmouseenter = e => {
-  console.log('Entered on<event>');
-};
+// h1.onmouseenter = e => {
+//   console.log('Entered on<event>');
+// };
 
-const alertH1 = e => {
-  console.log('Entered event handler');
-};
+// const alertH1 = e => {
+//   console.log('Entered event handler');
+// };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)}})`;
+
+console.log(randomColor());
