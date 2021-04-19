@@ -75,3 +75,16 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const h1 = document.querySelector('h1');
+
+// Say, for mouseenter
+h1.onmouseenter = e => {
+  console.log('Entered on<event>');
+};
+
+const alertH1 = e => {
+  console.log('Entered event handler');
+};
+
+h1.addEventListener('mouseenter', alertH1);
