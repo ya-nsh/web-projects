@@ -53,4 +53,13 @@ btnScrollTo.addEventListener('click', e => {
 
 const h1 = document.querySelector('h1');
 
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    e.preventDefault(); //to not jump into the section temporarily
+    console.log('LINK');
+    const id = this.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
+// The above is not efficient as the exact same function is attached to 3 elements.
