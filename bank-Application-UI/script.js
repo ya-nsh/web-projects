@@ -51,8 +51,6 @@ btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-const h1 = document.querySelector('h1');
-
 // document.querySelectorAll('.nav__link').forEach(function (el) {
 //   el.addEventListener('click', function (e) {
 //     e.preventDefault(); //to not jump into the section temporarily
@@ -76,3 +74,9 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+// DOM Traversing
+
+const h1 = document.querySelector('h1');
+// Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
