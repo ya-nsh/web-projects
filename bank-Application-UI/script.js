@@ -100,6 +100,22 @@ h1.lastElementChild.style.color = 'blue';
 console.log(h1.parentNode);
 console.log(h1.parentElement);
 
-// The closest() method traverses the Element and its parents (heading toward the document root) until it finds a node that matches the provided selector string
-console.log(h1.closest('header'));
-h1.closest('header').style.background = 'black';
+console.log(h1.closest('.header'));
+
+console.log(h1.closest('h1')); // <h1>...</h1>
+
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+// For nodes:
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+
+[...h1.parentElement.children].forEach(el => {
+  if (el !== h1) {
+    el.style.backgroundColor = 'black';
+    el.style.transform = 'scale(0.5)'; //making them 50% smaller
+  }
+});
