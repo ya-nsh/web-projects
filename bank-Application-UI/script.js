@@ -79,4 +79,27 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 const h1 = document.querySelector('h1');
 // Going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
+
+console.log(h1.querySelectorAll('.highlight')); //only children of h1 with hightlight class get selected. It can go as deep as necessary.
+// If there were other highlight class elements in the page, they would not get selected as they are not the children of h1 element.
+
+// To get only the DIRECT child nodes:
+console.log(h1.childNodes); //this gives us every single node which is unnecessary.
+
+// To only get the direct child elements
+console.log(h1.children); //returns a HTMLCollection which is a live collection so, its updated.
+
+console.log(h1.firstElementChild.style.color);
+// We can even set them
+h1.firstElementChild.style.color = 'red';
+h1.lastElementChild.style.color = 'blue';
+
+// Going upwards: parents
+
+// For direct parent
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+// The closest() method traverses the Element and its parents (heading toward the document root) until it finds a node that matches the provided selector string
+console.log(h1.closest('header'));
+h1.closest('header').style.background = 'black';
