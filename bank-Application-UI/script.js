@@ -124,4 +124,13 @@ const h1 = document.querySelector('h1');
 const tabs = document.querySelectorAll('.operations__tab');
 console.log(tabs);
 const tabsContainer = document.querySelector('.operations__tab-container');
-console.log(tabsContainer);
+
+const tabsContent = document.querySelectorAll('.operations__content');
+
+
+tabs.forEach(t => {
+  t.addEventListener('click', () => console.log('object'));
+});
+
+ 
+
