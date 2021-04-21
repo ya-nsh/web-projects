@@ -127,10 +127,17 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 
 const tabsContent = document.querySelectorAll('.operations__content');
 
+// The below is a bad practice as if there are say, 200 buttons, this function will be repeated 200 times.
+// tabs.forEach(t => {
+//   t.addEventListener('click', () => console.log('object'));
+// });
 
-tabs.forEach(t => {
-  t.addEventListener('click', () => console.log('object'));
+//  Use event delegation instead
+tabsContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+
+  // Ignore areas where clicks are NULL
+  if (!clicked) return;
+  clicked.classList.add('operations__tab--active');
 });
-
- 
-
