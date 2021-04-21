@@ -75,50 +75,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-// DOM Traversing
-
 const h1 = document.querySelector('h1');
-// Going downwards: child
-
-// console.log(h1.querySelectorAll('.highlight')); //only children of h1 with hightlight class get selected. It can go as deep as necessary.
-// If there were other highlight class elements in the page, they would not get selected as they are not the children of h1 element.
-
-// To get only the DIRECT child nodes:
-// console.log(h1.childNodes); //this gives us every single node which is unnecessary.
-
-// To only get the direct child elements
-// console.log(h1.children); //returns a HTMLCollection which is a live collection so, its updated.
-
-// console.log(h1.firstElementChild.style.color);
-// We can even set them
-// h1.firstElementChild.style.color = 'red';
-// h1.lastElementChild.style.color = 'blue';
-
-// Going upwards: parents
-
-// For direct parent
-// console.log(h1.parentNode);
-// console.log(h1.parentElement);
-
-// console.log(h1.closest('.header'));
-
-// console.log(h1.closest('h1')); // <h1>...</h1>
-
-// console.log(h1.previousElementSibling);
-// console.log(h1.nextElementSibling);
-
-// // For nodes:
-// console.log(h1.previousSibling);
-// console.log(h1.nextSibling);
-
-// console.log(h1.parentElement.children);
-
-// [...h1.parentElement.children].forEach(el => {
-//   if (el !== h1) {
-//     el.style.backgroundColor = 'black';
-//     el.style.transform = 'scale(0.5)'; //making them 50% smaller
-//   }
-// });
 
 // Tabbed Content
 const tabs = document.querySelectorAll('.operations__tab');
@@ -135,7 +92,6 @@ const tabsContent = document.querySelectorAll('.operations__content');
 //  Use event delegation instead
 tabsContainer.addEventListener('click', e => {
   const clicked = e.target.closest('.operations__tab');
- 
 
   // Ignore areas where clicks are NULL
   if (!clicked) return;
