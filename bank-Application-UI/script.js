@@ -2,6 +2,11 @@
 
 ///////////////////////////////////////
 // Modal window
+const h1 = document.querySelector('h1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+
+const tabsContent = document.querySelectorAll('.operations__content');
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -75,14 +80,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-const h1 = document.querySelector('h1');
-
 // Tabbed Content
-const tabs = document.querySelectorAll('.operations__tab');
-console.log(tabs);
-const tabsContainer = document.querySelector('.operations__tab-container');
-
-const tabsContent = document.querySelectorAll('.operations__content');
 
 // The below is a bad practice as if there are say, 200 buttons, this function will be repeated 200 times.
 // tabs.forEach(t => {
@@ -104,4 +102,20 @@ tabsContainer.addEventListener('click', e => {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
+});
+
+// Menu fade animation
+
+// mouseenter does not bubble. mouseover can be used for bubbling
+const nav = document.querySelector('nav');
+nav.addEventListener('mouseover', e => {
+  nav.style.backgroundColor = 'black';
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelector('nav__link');
+  }
+});
+
+nav.addEventListener('mouseout', e => {
+  nav.style.backgroundColor = 'white';
 });
