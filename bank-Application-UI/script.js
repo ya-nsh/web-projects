@@ -105,25 +105,25 @@ tabsContainer.addEventListener('click', e => {
 });
 
 // Menu fade animation
-
-// mouseenter does not bubble. mouseover can be used for bubbling
-const nav = document.querySelector('nav');
-nav.addEventListener('mouseover', e => {
-  // nav.style.backgroundColor = 'black';
+const handleHover = function (e, opacity) {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
-    const siblings = link.closest('.nav').querySelector('nav__link');
-
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    console.log(siblings);
     const logo = link.closest('.nav').querySelector('img');
 
     siblings.forEach(el => {
       if (el !== link) {
-        el.style.opacity = 0.5;
+        el.style.opacity = this;
       }
     });
-  }
-});
 
-nav.addEventListener('mouseout', e => {
-  // nav.style.backgroundColor = 'white';
-});
+    logo.style.opacity = this;
+  }
+};
+
+// mouseenter does not bubble. mouseover can be used for bubbling
+const nav = document.querySelector('nav');
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+
+nav.addEventListener('mouseout', handleHover.bind(1));
