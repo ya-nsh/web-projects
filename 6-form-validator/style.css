@@ -1,3 +1,9 @@
+:root {
+  --valid-color: rgb(19, 224, 19);
+  --invalid-color: rgb(238, 8, 8);
+  --x: rgb(238, 8, 8);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -45,6 +51,19 @@ h1 {
   margin: 40px;
 }
 
+.form button {
+  cursor: pointer;
+  display: block;
+  border: 3px solid orangered;
+  background-color: orangered;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  margin-top: 70px;
+}
+
 .form-control label {
   color: rgb(0, 0, 0);
   display: block;
@@ -61,8 +80,20 @@ h1 {
 }
 
 .form-control.success input {
-  border-color: rgb(19, 224, 19);
+  border-color: var(--valid-color);
 }
 .form-control.error input {
-  border-color: rgb(238, 8, 8);
+  border-color: var(--invalid-color);
+}
+
+.form-control small {
+  color: var(--invalid-color);
+  position: absolute;
+  bottom: -1;
+  left: -1;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
 }
