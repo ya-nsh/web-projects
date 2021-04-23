@@ -6,13 +6,6 @@ body {
   background-color: blanchedalmond;
   font-family: 'Lato', sans-serif;
 
-  /* Centering */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-  margin: 0;
-
   /* Background gradient color */
   background: rgb(131, 58, 180);
   background: linear-gradient(
@@ -21,6 +14,13 @@ body {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
+
+  /* Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  margin: 0;
 }
 
 .container {
@@ -49,4 +49,20 @@ h1 {
   color: rgb(0, 0, 0);
   display: block;
   margin-bottom: 15px;
+}
+
+.form-control input {
+  border: 3px solid rgb(230, 211, 211);
+  border-radius: 5px;
+  display: block;
+  padding: 15px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.form-control.success input {
+  border-color: rgb(19, 224, 19);
+}
+.form-control.error input {
+  border-color: rgb(238, 8, 8);
 }
