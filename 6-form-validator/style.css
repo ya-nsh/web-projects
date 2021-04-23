@@ -12,4 +12,41 @@ body {
   justify-content: center;
   min-height: 90vh;
   margin: 0;
+
+  /* Background gradient color */
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.container {
+  background-color: rgb(252, 251, 251);
+  border-radius: 10px;
+  box-shadow: 0 2px 40px rgb(17, 16, 16);
+  width: 500px;
+}
+
+.form-control {
+  margin: 20px;
+
+  position: relative;
+}
+
+.form {
+  padding: 15px 35px;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px;
+}
+
+.form-control label {
+  color: rgb(0, 0, 0);
+  display: block;
+  margin-bottom: 15px;
 }
