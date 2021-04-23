@@ -18,9 +18,16 @@ const displaySuccess = (input) => {
   inputformcontrol.classList.add('success');
 };
 
-function validateEmail(email) {
+function validateEmail(input) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+
+  if (re.test(input.value.trim())) {
+    displaySuccess(input);
+  } else {
+    displayError(input, 'Invalid Email');
+  }
+
+  //   return re.test(String(email).toLowerCase());
 }
 
 const getFieldName = (input) => {
@@ -38,33 +45,29 @@ const checkFields = (inputArr) => {
   });
 };
 
+const checkLength = (input, min, max) => {
+  if (input.value.length < min || input.value.length > max) {
+    displayError(
+      input,
+      `${getFieldName(input)} must be  between ${min} and ${max} digits.`
+    );
+  }
+};
+
+const checkPasswords = (input1, input2) => {
+  if (input1.value !== input2.value) {
+    displayError(input2, "The passwords don't match");
+  } else {
+    displaySuccess(input1);
+  }
+};
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   checkFields([username, email, password, passwordRe]);
-  //   if (!username.value) {
-  //     displayError(username, 'Username is required');
-  //   } else {
-  //     displaySuccess(username);
-  //   }
-
-  //   if (!email.value) {
-  //     displayError(email, 'Email is required');
-  //   } else if (!validateEmail(email.value)) {
-  //     displayError(email, 'Invalid email');
-  //   } else {
-  //     displaySuccess(email);
-  //   }
-
-  //   if (!password.value) {
-  //     displayError(password, 'Password is required');
-  //   } else {
-  //     displaySuccess(password);
-  //   }
-
-  //   if (!passwordRe.value && passwordRe !== password) {
-  //     displayError(passwordRe, "Passwords didn't match");
-  //   } else {
-  //     displaySuccess(passwordRe);
-  //   }
+  checkLength(username, 4, 10);
+  checkLength(password, 6, 10);
+  validateEmail(email);
+  checkPasswords(password, passwordRe);
 });
