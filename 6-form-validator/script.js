@@ -27,7 +27,6 @@ function validateEmail(input) {
     displayError(input, 'Invalid Email');
   }
 
-  //   return re.test(String(email).toLowerCase());
 }
 
 const getFieldName = (input) => {
