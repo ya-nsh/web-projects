@@ -47,3 +47,25 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Bubbling event handlers
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+// document.querySelector('.nav__link').addEventListener('click', e => {
+//   e.preventDefault();
+//   console.log('object of nav-link ', e.target , e.currentTarget);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', e => {
+//   e.preventDefault();
+//   console.log('object of nav-links ', e.target , e.currentTarget);
+// });
+
+// document.querySelector('.nav').addEventListener('click', e => {
+//   e.preventDefault();
+//   console.log('object of nav ', e.target , e.currentTarget);
+// });
