@@ -5,6 +5,7 @@
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
+const header = document.querySelector('.header');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
@@ -29,3 +30,10 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+
+message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
+
+header.prepend(message);
