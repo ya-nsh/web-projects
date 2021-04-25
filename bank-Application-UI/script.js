@@ -8,6 +8,8 @@ const overlay = document.querySelector('.overlay');
 const header = document.querySelector('.header');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -31,22 +33,26 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-const message = document.createElement('div');
-message.classList.add('cookie-message');
+// Cookie Message
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
 
-message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
+// message.innerHTML = `Cookies are useful for analytics. <button class = "btn btn--close-cookie">Got it!</button>`;
 
-header.prepend(message);
+// header.prepend(message);
 
 //Smooth Scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 // Say, smooth scroll to a section when clicked on a button
 // Modern way
 btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Page navigation
+document.querySelectorAll(".nav-link").forEach(ele => {
+  ele.addEventListener("click")
+})
 
 // Bubbling event handlers
 // const randomInt = (min, max) =>
