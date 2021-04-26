@@ -10,6 +10,8 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 
+const nav = document.querySelector('.nav');
+
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContent = document.querySelectorAll('.operations__content');
 const tabsContainer = document.querySelector('.operations__tab-container');
@@ -121,4 +123,13 @@ tabsContainer.addEventListener('click', function (e) {
   // if (e.target.classList.contains('btn')) {
   //   console.log(e.target);
   // }
+});
+
+// Blurring navigation links upon hovering
+nav.addEventListener('mouseover', e => {
+  // mouseenter event does not bubble whereas mouseover event bubbles.
+  const link = e.target;
+});
+nav.addEventListener('mouseout', e => {
+  // mouseenter event does not bubble whereas mouseover event bubbles.
 });
