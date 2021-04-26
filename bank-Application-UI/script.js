@@ -126,10 +126,23 @@ tabsContainer.addEventListener('click', function (e) {
 });
 
 // Blurring navigation links upon hovering
-nav.addEventListener('mouseover', e => {
-  // mouseenter event does not bubble whereas mouseover event bubbles.
-  const link = e.target;
-});
-nav.addEventListener('mouseout', e => {
-  // mouseenter event does not bubble whereas mouseover event bubbles.
-});
+const blurLink = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) {
+        el.style.opacity = this;
+      }
+    });
+
+    logo.style.opacity = this;
+  }
+};
+
+nav.addEventListener('mouseover', blurLink.bind(0.4));
+nav.addEventListener('mouseout', blurLink.bind(1));
