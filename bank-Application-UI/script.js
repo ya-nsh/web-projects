@@ -104,11 +104,19 @@ tabsContainer.addEventListener('click', function (e) {
   // Guard Clause
   if (!clicked) return;
 
-  // Removing active class on all tabs first
+  // Removing active class on all tabs and tabsContent first
   tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(content =>
+    content.classList.remove('operations__content--active')
+  );
 
   // Adding active class on the selected tab
   clicked.classList.add('operations__tab--active');
+
+  // Activating content area of the active class
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 
   // if (e.target.classList.contains('btn')) {
   //   console.log(e.target);
