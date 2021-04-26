@@ -144,5 +144,21 @@ const blurLink = function (e) {
   }
 };
 
+// Passing arguments to the event handler
 nav.addEventListener('mouseover', blurLink.bind(0.4));
 nav.addEventListener('mouseout', blurLink.bind(1));
+
+// Sticky navigation
+// Scroll event is not efficient as it fires a lot of events as you scroll and should be avoided.
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+window.addEventListener('scroll', function (e) {
+  console.log(window.scrollY);
+
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
