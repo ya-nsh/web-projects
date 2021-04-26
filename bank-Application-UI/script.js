@@ -1,15 +1,18 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
+
 const header = document.querySelector('.header');
+const section1 = document.querySelector('#section--1');
+
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContent = document.querySelectorAll('.operations__content');
+const tabsContainer = document.querySelector('.operations__tab-container');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -91,3 +94,23 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //   e.preventDefault();
 //   console.log('object of nav ', e.target , e.currentTarget);
 // });
+
+// Tabbed Component using event delegation.
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  // console.log(clicked.closest('button'));
+
+  // Guard Clause
+  if (!clicked) return;
+
+  // Removing active class on all tabs first
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+
+  // Adding active class on the selected tab
+  clicked.classList.add('operations__tab--active');
+
+  // if (e.target.classList.contains('btn')) {
+  //   console.log(e.target);
+  // }
+});
