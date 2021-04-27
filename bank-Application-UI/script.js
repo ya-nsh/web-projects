@@ -168,10 +168,12 @@ const stickyNav = entries => {
   }
 };
 
+const navHeight = nav.getBoundingClientRect().height;
+
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
-  rootMargin: '-89px',
+  rootMargin: `-${navHeight}px`,
 });
 
 headerObserver.observe(header);
