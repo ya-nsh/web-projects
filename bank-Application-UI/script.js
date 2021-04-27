@@ -161,12 +161,17 @@ nav.addEventListener('mouseout', blurLink.bind(1));
 const stickyNav = entries => {
   const [entry] = entries;
   console.log(entry);
-
+  if (!entry.isIntersecting) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
 };
 
 const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
   threshold: 0,
+  rootMargin: '-89px',
 });
 
 headerObserver.observe(header);
