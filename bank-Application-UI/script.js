@@ -75,28 +75,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
-// Bubbling event handlers
-// const randomInt = (min, max) =>
-//   Math.floor(Math.random() * (max - min + 1) + min);
-
-// const randomColor = () =>
-//   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
-
-// document.querySelector('.nav__link').addEventListener('click', e => {
-//   e.preventDefault();
-//   console.log('object of nav-link ', e.target , e.currentTarget);
-// });
-
-// document.querySelector('.nav__links').addEventListener('click', e => {
-//   e.preventDefault();
-//   console.log('object of nav-links ', e.target , e.currentTarget);
-// });
-
-// document.querySelector('.nav').addEventListener('click', e => {
-//   e.preventDefault();
-//   console.log('object of nav ', e.target , e.currentTarget);
-// });
-
 // Tabbed Component using event delegation.
 
 tabsContainer.addEventListener('click', function (e) {
@@ -150,15 +128,24 @@ nav.addEventListener('mouseout', blurLink.bind(1));
 
 // Sticky navigation
 // Scroll event is not efficient as it fires a lot of events as you scroll and should be avoided.
-const initialCoords = section1.getBoundingClientRect();
-console.log(initialCoords);
+// const initialCoords = section1.getBoundingClientRect();
+// console.log(initialCoords);
 
-window.addEventListener('scroll', function (e) {
-  console.log(window.scrollY);
+// window.addEventListener('scroll', function (e) {
+//   console.log(window.scrollY);
 
-  if (window.scrollY > initialCoords.top) {
-    nav.classList.add('sticky');
-  } else {
-    nav.classList.remove('sticky');
-  }
-});
+//   if (window.scrollY > initialCoords.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+// Sticky navigation using Intersection Observer API
+
+const observerCallback = function () {};
+
+const observerOptions = {};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+observer.observe(section1);
