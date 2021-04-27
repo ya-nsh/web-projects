@@ -143,9 +143,17 @@ nav.addEventListener('mouseout', blurLink.bind(1));
 
 // Sticky navigation using Intersection Observer API
 
-const observerCallback = function () {};
+const observerCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+// The callback function in the above line will get called each time that the observed element(or the target element, here section1) is intersecting the root element at the threshold defined in the options below
 
-const observerOptions = {};
+const observerOptions = {
+  root: null,
+  threshold: 0.1,
+};
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 observer.observe(section1);
