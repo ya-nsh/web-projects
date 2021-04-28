@@ -10,3 +10,4 @@ The following table showcases them in an organized way:
 | 1  |Number Guessing with computer   |https://deployorg.github.io/Number-Guessing-with-Computer/   |     HTML-CSS-JS |
 |2   |Expanding Cards of images   | https://imagesliders.netlify.app/  |     HTML-CSS-JS |
 |3   |Progress Bar   | https://progresstheme.netlify.app/  |   HTML-CSS-JS   |
+|4   |Drum Kit   |    |   HTML-CSS-JS   |
