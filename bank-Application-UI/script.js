@@ -201,3 +201,13 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+// Lazy Loading Images
+const imgTargets = document.querySelectorAll('img[data-src');
+console.log(imgTargets);
+
+const loadImg = function (entries, observer) {};
+
+const imgObserver = new IntersectionObserver(loadImg, {});
+
+imgTargets.forEach(img => imgObserver.observe(img));
