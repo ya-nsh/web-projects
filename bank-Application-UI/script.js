@@ -178,5 +178,9 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(header);
 
-
 // Revealing elements on scroll
+// First hiding all HTML sections with the class section--hidden
+// Now, on scroll, unhide these sections
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {};
