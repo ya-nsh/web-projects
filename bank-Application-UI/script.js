@@ -199,7 +199,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden');
 });
 
 // Lazy Loading Images
@@ -230,4 +230,8 @@ imgTargets.forEach(img => imgObserver.observe(img));
 // Slider
 const slides = document.querySelectorAll('.slide');
 
-slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i})`));
+const slider = document.querySelector('.slider');
+slider.style.transform = 'scale(0.5)';
+slider.style.overflow = 'scale(0.5)';
+
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
