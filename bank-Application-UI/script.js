@@ -229,9 +229,17 @@ imgTargets.forEach(img => imgObserver.observe(img));
 
 // Slider
 const slides = document.querySelectorAll('.slide');
-
 const slider = document.querySelector('.slider');
-slider.style.transform = 'scale(0.5)';
-slider.style.overflow = 'scale(0.5)';
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
 
-slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+let curSlide = 0;
+
+slider.style.transform = 'scale(0.2)';
+slider.style.overflow = 'visible';
+
+// Changing to the next slide.
+btnRight.addEventListener('click', function () {
+  curSlide++;
+  slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+});
