@@ -11,3 +11,4 @@ The following table showcases them in an organized way:
 |2   |Expanding Cards of images   | https://imagesliders.netlify.app/  |     HTML-CSS-JS |
 |3   |Progress Bar   | https://progresstheme.netlify.app/  |   HTML-CSS-JS   |
 |4   |Drum Kit   |    |   HTML-CSS-JS   |
+|5   |Clock GUI   |    |   HTML-CSS-JS   |
