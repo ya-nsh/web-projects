@@ -4,6 +4,7 @@
 
 body {
   font-family: 'Nunito', sans-serif;
+  background-color: rgb(245, 228, 0);
   display: flex;
   margin: 100px;
   height: 75vh;
@@ -15,4 +16,37 @@ body {
 h1 {
   font-weight: bold;
   margin: 0;
+}
+
+p {
+  font-size: 20px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin: 30px 40px;
+}
+
+span {
+  font-size: 10px;
+}
+
+a {
+  color: rgb(31, 29, 29);
+  font-size: 12px;
+  text-decoration: none;
+  margin: 20px 0;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 800px;
+  max-width: 100%;
+  min-height: 520px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 14px 28px rgba(1, 1, 1, 0.35), 0 12px 14px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 14px 28px rgba(1, 1, 1, 0.35),
+    0 12px 14px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 0 14px 28px rgba(1, 1, 1, 0.35),
+    0 12px 14px rgba(0, 0, 0, 0.22);
 }
