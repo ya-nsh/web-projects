@@ -1,8 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   display: flex;
+  margin: 100px;
+  height: 75vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-* {
-  box-sizing: border-box;
+h1 {
+  font-weight: bold;
+  margin: 0;
 }
