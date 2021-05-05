@@ -1,4 +1,6 @@
 :root {
+  --line-border-fill: rgb(243, 24, 24);
+  --line-border-empty: rgb(62, 245, 62);
 }
 
 * {
