@@ -241,6 +241,16 @@ slider.style.overflow = 'visible';
 
 // Changing to the next slide.
 
+const activateDot = function (slide) {
+  document
+    .querySelectorAll('.dots__dot')
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+  document
+    .querySelector(`.dots__dot[data-slide="${slide}"]`)
+    .classList.add('dots__dot--active');
+};
+
 const nextSlide = function () {
   if (curSlide === maxSlide - 1) {
     curSlide = 0;
