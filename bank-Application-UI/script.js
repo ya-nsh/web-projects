@@ -282,3 +282,8 @@ dotContainer.addEventListener('click', function (e) {
     activateDot(slide);
   }
 });
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowLeft') prevSlide();
+  e.key === 'ArrowRight' && nextSlide();
+});
