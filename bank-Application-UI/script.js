@@ -310,3 +310,4 @@ const slider = function () {
     }
   });
 };
+slider();
