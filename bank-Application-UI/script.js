@@ -234,12 +234,24 @@ const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
 
 let curSlide = 0;
+const maxSlide = slides.length;
 
 slider.style.transform = 'scale(0.2)';
 slider.style.overflow = 'visible';
 
 // Changing to the next slide.
-btnRight.addEventListener('click', function () {
-  curSlide++;
-  slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
-});
+
+const nextSlide = function () {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+
+  goToSlide(curSlide);
+  activateDot(curSlide);
+};
+
+// Event handlers
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
