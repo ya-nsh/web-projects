@@ -19,3 +19,5 @@ function validateEmail(input) {
     displayError(input, 'Invalid Email');
   }
 }
+
+validateEmail(email);
