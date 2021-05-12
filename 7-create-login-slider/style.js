@@ -41,8 +41,14 @@ function validateEmail(input) {
 
 container.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+  emailRegister.classList.remove('success');
   validateEmail(emailRegister);
+
+  // if (emailRegister.classList.contains('success')) {
+  //   emailRegister.classList.remove('success');
+  // } else {
+  //   validateEmail(emailRegister);
+  // }
 
   // checkFields([username, email, password, passwordRe]);
   // checkLength(username, 4, 10);
