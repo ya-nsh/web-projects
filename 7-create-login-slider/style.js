@@ -36,10 +36,10 @@ const checkFields = (inputArr) => {
         displaySuccess(input);
       } else {
         alert('Password length must be greater than 6 characters');
-        return;
+        // return;
       }
     }
-    if (input.value.trim()) {
+    if (input.value.trim() && !(input.id == 'password')) {
       displaySuccess(input);
     }
   });
@@ -71,12 +71,6 @@ container.addEventListener('submit', (e) => {
   validateLoginEmail(emailLogin);
 
   checkFields([username, password, gender]);
-
-  // if (emailRegister.classList.contains('success')) {
-  //   emailRegister.classList.remove('success');
-  // } else {
-  //   validateEmail(emailRegister);
-  // }
 });
 
 username.blur();
