@@ -17,14 +17,7 @@ signInButton.addEventListener('click', () => {
   container.classList.remove('right-panel-active');
 });
 
-// const displayError = (input, message) => {
-
-//   inputformcontrol.classList.add('error');
-//   smallMessage.textContent = message;
-// };
-
 const displaySuccess = (input) => {
-  // inputformcontrol.classList.remove('error');
   input.classList.add('success');
 };
 
@@ -34,9 +27,6 @@ function validateEmail(input) {
   if (re.test(input.value.trim())) {
     displaySuccess(input);
   }
-  //  else {
-  //   displayError(input, 'Invalid Email');
-  // }
 }
 
 const checkFields = (inputArr) => {
@@ -58,6 +48,7 @@ const checkFields = (inputArr) => {
 const removeSuccess = () => {
   const fields = [emailRegister, emailLogin, username, password, gender];
   fields.forEach((field) => field.classList.remove('success'));
+
   // emailRegister.classList.remove('success');
   // emailLogin.classList.remove('success');
   // username.classList.remove('success');
@@ -78,7 +69,7 @@ container.addEventListener('submit', (e) => {
   removeSuccess();
   validateEmail(emailRegister);
   validateLoginEmail(emailLogin);
-  // validateLoginEmail(emailLogin);
+
   checkFields([username, password, gender]);
 
   // if (emailRegister.classList.contains('success')) {
