@@ -12,14 +12,14 @@ signInButton.addEventListener('click', () => {
 });
 
 const displayError = (input, message) => {
-  const inputformcontrol = input.parentElement;
-  const smallMessage = inputformcontrol.querySelector('small');
+   
+ 
   inputformcontrol.classList.add('error');
   smallMessage.textContent = message;
 };
 
 const displaySuccess = (input) => {
-  const inputformcontrol = input.parentElement;
+ 
 
   inputformcontrol.classList.remove('error');
   inputformcontrol.classList.add('success');
