@@ -41,6 +41,14 @@ function validateEmail(input) {
 
 const checkFields = (inputArr) => {
   inputArr.forEach((input) => {
+    if (input.id == 'password' && input.value.trim()) {
+      if (input.value.length >= 7) {
+        displaySuccess(input);
+      } else {
+        alert('Password length must be greater than 6 characters');
+        return;
+      }
+    }
     if (input.value.trim()) {
       displaySuccess(input);
     }
@@ -49,15 +57,26 @@ const checkFields = (inputArr) => {
 
 const removeSuccess = () => {
   emailRegister.classList.remove('success');
+  emailLogin.classList.remove('success');
   username.classList.remove('success');
   password.classList.remove('success');
   gender.classList.remove('success');
+};
+
+const validateLoginEmail = (input) => {
+  const re = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@sitpune.edu([\.])in$/g;
+
+  if (re.test(input.value.trim()) || input.value == 'admin@admin.com') {
+    displaySuccess(input);
+  }
 };
 
 container.addEventListener('submit', (e) => {
   e.preventDefault();
   removeSuccess();
   validateEmail(emailRegister);
+  validateLoginEmail(emailLogin);
+  // validateLoginEmail(emailLogin);
   checkFields([username, password, gender]);
 
   // if (emailRegister.classList.contains('success')) {
@@ -65,9 +84,4 @@ container.addEventListener('submit', (e) => {
   // } else {
   //   validateEmail(emailRegister);
   // }
-
-  // checkFields([username, email, password, passwordRe]);
-  // checkLength(username, 4, 10);
-  // checkLength(password, 6, 10);
-  // checkPasswords(password, passwordRe);
 });
