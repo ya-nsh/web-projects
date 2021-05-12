@@ -1,6 +1,6 @@
 const emailRegister = document.getElementById('email-box-register');
 const emailLogin = document.getElementById('email-box-login');
-const name = document.getElementById('name');
+const username = document.getElementById('name');
 const password = document.getElementById('password');
 const gender = document.getElementById('gender');
 
@@ -41,19 +41,24 @@ function validateEmail(input) {
 
 const checkFields = (inputArr) => {
   inputArr.forEach((input) => {
-    if (!input.value.trim()) {
-      displayError(input, `${getFieldName(input)} is required`);
-    } else {
+    if (input.value.trim()) {
       displaySuccess(input);
     }
   });
 };
 
+const removeSuccess = () => {
+  emailRegister.classList.remove('success');
+  username.classList.remove('success');
+  password.classList.remove('success');
+  gender.classList.remove('success');
+};
+
 container.addEventListener('submit', (e) => {
   e.preventDefault();
-  emailRegister.classList.remove('success');
+  removeSuccess();
   validateEmail(emailRegister);
-  checkFields([username, email, password, passwordRe]);
+  checkFields([username, password, gender]);
 
   // if (emailRegister.classList.contains('success')) {
   //   emailRegister.classList.remove('success');
