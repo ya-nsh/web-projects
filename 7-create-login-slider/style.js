@@ -56,11 +56,13 @@ const checkFields = (inputArr) => {
 };
 
 const removeSuccess = () => {
-  emailRegister.classList.remove('success');
-  emailLogin.classList.remove('success');
-  username.classList.remove('success');
-  password.classList.remove('success');
-  gender.classList.remove('success');
+  const fields = [emailRegister, emailLogin, username, password, gender];
+  fields.forEach((field) => field.classList.remove('success'));
+  // emailRegister.classList.remove('success');
+  // emailLogin.classList.remove('success');
+  // username.classList.remove('success');
+  // password.classList.remove('success');
+  // gender.classList.remove('success');
 };
 
 const validateLoginEmail = (input) => {
@@ -85,3 +87,5 @@ container.addEventListener('submit', (e) => {
   //   validateEmail(emailRegister);
   // }
 });
+
+username.blur();
