@@ -1,7 +1,12 @@
 const emailRegister = document.getElementById('email-box-register');
 const emailLogin = document.getElementById('email-box-login');
+const name = document.getElementById('name');
+const password = document.getElementById('password');
+const gender = document.getElementById('gender');
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
+
 const container = document.getElementById('container');
 
 signUpButton.addEventListener('click', () => {
@@ -24,10 +29,7 @@ const displaySuccess = (input) => {
 };
 
 function validateEmail(input) {
-  // const re =
-  //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  const re = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@sitpune.edu([\.])in/g;
+  const re = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@sitpune.edu([\.])in$/g;
 
   if (re.test(input.value.trim())) {
     displaySuccess(input);
@@ -37,12 +39,21 @@ function validateEmail(input) {
   // }
 }
 
-// validateEmail(email);
+const checkFields = (inputArr) => {
+  inputArr.forEach((input) => {
+    if (!input.value.trim()) {
+      displayError(input, `${getFieldName(input)} is required`);
+    } else {
+      displaySuccess(input);
+    }
+  });
+};
 
 container.addEventListener('submit', (e) => {
   e.preventDefault();
   emailRegister.classList.remove('success');
   validateEmail(emailRegister);
+  checkFields([username, email, password, passwordRe]);
 
   // if (emailRegister.classList.contains('success')) {
   //   emailRegister.classList.remove('success');
