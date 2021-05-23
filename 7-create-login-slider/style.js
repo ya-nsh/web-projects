@@ -2,7 +2,12 @@ const emailRegister = document.getElementById('email-box-register');
 const emailLogin = document.getElementById('email-box-login');
 const username = document.getElementById('name');
 const password = document.getElementById('password');
+const loginPassword = document.getElementById('pwdlogin');
 const gender = document.getElementById('gender');
+const credentials = {};
+const getIn = document.getElementById('getInBtn');
+
+var breakException = { error: 'Incorrect' };
 
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
@@ -26,6 +31,9 @@ function validateEmail(input) {
 
   if (re.test(input.value.trim())) {
     displaySuccess(input);
+  } else {
+    alert('Only symbiosis students are accepted here.');
+    throw breakException.error;
   }
 }
 
@@ -58,13 +66,43 @@ const validateLoginEmail = (input) => {
   }
 };
 
+const getCredentials = () => {
+  credentials['username'] = username.value;
+
+  credentials['email'] = emailRegister.value;
+
+  credentials['password'] = password.value;
+};
+
 container.addEventListener('submit', (e) => {
   e.preventDefault();
+  console.log(e);
+
   removeSuccess();
   validateEmail(emailRegister);
   validateLoginEmail(emailLogin);
 
   checkFields([username, password, gender]);
+
+  getCredentials(); //registration
+  // checkCredentials(); //login check
+
+  console.log(credentials);
 });
 
+getIn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  const allValues = Object.values(credentials);
+  if (
+    allValues.includes(emailLogin.value) &&
+    allValues.includes(loginPassword.value)
+  ) {
+    console.log('YESSS');
+    displaySuccess(emailLogin);
+    displaySuccess(loginPassword);
+  } else {
+    alert('No record with these credentials exist');
+  }
+});
 username.blur();
