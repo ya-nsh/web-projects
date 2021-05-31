@@ -19,7 +19,7 @@ navigator.geolocation.getCurrentPosition(
     const longitude = position.coords.longitude;
 
     console.log(latitude, longitude);
-    
+    console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
   },
 
   function () {
