@@ -10,3 +10,19 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+
+// Using the Geolocation API
+navigator.geolocation.getCurrentPosition(
+  function (position) {
+    // console.log(position); -> retuns a geolocationposition object
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    console.log(latitude, longitude);
+    
+  },
+
+  function () {
+    alert('Unable to find your location');
+  }
+);
