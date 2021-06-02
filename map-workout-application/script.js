@@ -6,9 +6,9 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const form = document.querySelector('.form');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
-const inputDistance = document.querySelector('.form__input--distance');
-const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 // Using the Geolocation API
@@ -21,7 +21,7 @@ navigator.geolocation.getCurrentPosition(
     console.log(latitude, longitude);
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     const coords = [latitude, longitude];
-    const map = L.map('map').setView(coords, 10);
+    const map = L.map('map').setView(coords, 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
