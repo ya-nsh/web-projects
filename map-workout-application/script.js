@@ -21,6 +21,7 @@ navigator.geolocation.getCurrentPosition(
     console.log(latitude, longitude);
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     const coords = [latitude, longitude];
+
     const map = L.map('map').setView(coords, 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -32,6 +33,9 @@ navigator.geolocation.getCurrentPosition(
       .addTo(map)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
       .openPopup();
+
+    // Adding the event listener of leaflet library.
+    map.on();
   },
 
   function () {
