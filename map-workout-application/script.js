@@ -11,6 +11,8 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+let map;
+
 // Using the Geolocation API
 navigator.geolocation.getCurrentPosition(
   function (position) {
@@ -22,7 +24,7 @@ navigator.geolocation.getCurrentPosition(
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     let coords = [latitude, longitude];
 
-    const map = L.map('map').setView(coords, 14);
+    map = L.map('map').setView(coords, 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -31,22 +33,8 @@ navigator.geolocation.getCurrentPosition(
 
     // Adding the event listener of leaflet library.
     map.on('click', function (mapEvent) {
-      console.log(mapEvent);
-      const { lat, lng } = mapEvent.latlng;
-
-      L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup(
-          L.popup({
-            maxWidth: 100,
-            minWidth: 10,
-            autoClose: false,
-            closeOnClick: false,
-            className: 'running-popup',
-          })
-        )
-        .setPopupContent('Workout')
-        .openPopup();
+      form.classList.remove('hidden');
+      inputDistance.focus(); //immediately selects the distance input field
     });
   },
 
@@ -54,3 +42,24 @@ navigator.geolocation.getCurrentPosition(
     alert('Unable to find your location');
   }
 );
+
+form.addEventListener('keypress', function (e) {
+  // e.preventDefault();
+  // if (e.key === 'Enter') {
+  //   console.log('object');
+  // }
+  const { lat, lng } = mapEvent.latlng;
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 100,
+        minWidth: 10,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      })
+    )
+    .setPopupContent('Workout')
+    .openPopup();
+});
