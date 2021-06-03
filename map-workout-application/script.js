@@ -11,7 +11,7 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map;
+let map, mapEvent;
 
 // Using the Geolocation API
 navigator.geolocation.getCurrentPosition(
@@ -32,7 +32,8 @@ navigator.geolocation.getCurrentPosition(
     }).addTo(map);
 
     // Adding the event listener of leaflet library.
-    map.on('click', function (mapEvent) {
+    map.on('click', function (mapE) {
+      mapEvent = mapE;
       form.classList.remove('hidden');
       inputDistance.focus(); //immediately selects the distance input field
     });
@@ -43,11 +44,12 @@ navigator.geolocation.getCurrentPosition(
   }
 );
 
-form.addEventListener('keypress', function (e) {
+form.addEventListener('submit', function (e) {
   // e.preventDefault();
   // if (e.key === 'Enter') {
   //   console.log('object');
   // }
+  e.preventDefault();
   const { lat, lng } = mapEvent.latlng;
   L.marker([lat, lng])
     .addTo(map)
