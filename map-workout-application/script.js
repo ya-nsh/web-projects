@@ -45,11 +45,15 @@ navigator.geolocation.getCurrentPosition(
 );
 
 form.addEventListener('submit', function (e) {
-  // e.preventDefault();
-  // if (e.key === 'Enter') {
-  //   console.log('object');
-  // }
   e.preventDefault();
+
+  // Clearing the input fields upon submitting
+  inputCadence.value =
+    inputDistance.value =
+    inputDuration.value =
+    inputElevation.value =
+      '';
+
   const { lat, lng } = mapEvent.latlng;
   L.marker([lat, lng])
     .addTo(map)
