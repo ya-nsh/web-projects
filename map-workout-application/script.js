@@ -59,36 +59,37 @@ class App {
 
   _toggleElevationField() {}
 
-  _newWorkout() {}
+  _newWorkout(e) {
+    e.preventDefault();
+
+    // Clearing the input fields upon submitting
+    inputCadence.value =
+      inputDistance.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
+
+    const { lat, lng } = mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(this.#map)
+
+      .bindPopup(
+        L.popup({
+          maxWidth: 100,
+          minWidth: 10,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      )
+      .setPopupContent('Workout')
+      .openPopup();
+  }
 }
 
 const app = new App();
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  // Clearing the input fields upon submitting
-  inputCadence.value =
-    inputDistance.value =
-    inputDuration.value =
-    inputElevation.value =
-      '';
-
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 100,
-        minWidth: 10,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      })
-    )
-    .setPopupContent('Workout')
-    .openPopup();
-});
+form.addEventListener('submit', function (e) {});
 
 inputType.addEventListener('change', function (e) {
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
