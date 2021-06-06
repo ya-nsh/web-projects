@@ -11,22 +11,27 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map, mapEvent;
+// let map, mapEvent;
 
 class App {
+  #map;
+  #mapEvent;
+
   constructor() {
     this._getPosition();
   }
 
   _getPosition() {
     // Using the Geolocation API
-    navigator.geolocation.getCurrentPosition(this._loadMap, function () {
-      alert('Unable to find your location');
-    });
+    navigator.geolocation.getCurrentPosition(
+      this._loadMap.bind(this),
+      function () {
+        alert('Unable to find your location');
+      }
+    );
   }
 
   _loadMap(position) {
-    
     // console.log(position); -> retuns a geolocationposition object
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -35,16 +40,16 @@ class App {
     console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     let coords = [latitude, longitude];
 
-    map = L.map('map').setView(coords, 14);
+    this.#map = L.map('map').setView(coords, 14);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    }).addTo(this.#map);
 
     // Adding the event listener of leaflet library.
-    map.on('click', function (mapE) {
-      mapEvent = mapE;
+    this.#map.on('click', function (mapE) {
+      this.#mapEvent = mapE;
       form.classList.remove('hidden');
       inputDistance.focus(); //immediately selects the distance input field
     });
