@@ -11,8 +11,6 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-// let map, mapEvent;
-
 class App {
   #map;
   #mapEvent;
