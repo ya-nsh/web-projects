@@ -14,7 +14,9 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
 class App {
-  constructor() {}
+  constructor() {
+    this._getPosition();
+  }
 
   _getPosition() {
     // Using the Geolocation API
@@ -24,6 +26,7 @@ class App {
   }
 
   _loadMap(position) {
+    
     // console.log(position); -> retuns a geolocationposition object
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
