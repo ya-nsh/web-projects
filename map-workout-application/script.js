@@ -13,28 +13,17 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 let map, mapEvent;
 
+class App {
+  constructor() {}
 
-class App{
-  constructor(){
-
+  _getPosition() {
+    // Using the Geolocation API
+    navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+      alert('Unable to find your location');
+    });
   }
 
-  _getPosition(){}
-
-  _loadMap(){position}
-
-  _showForm(){}
-
-  _toggleElevationField()
-
-  _newWorkout()
-
-}
-
-
-// Using the Geolocation API
-navigator.geolocation.getCurrentPosition(
-  function (position) {
+  _loadMap(position) {
     // console.log(position); -> retuns a geolocationposition object
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -56,12 +45,16 @@ navigator.geolocation.getCurrentPosition(
       form.classList.remove('hidden');
       inputDistance.focus(); //immediately selects the distance input field
     });
-  },
-
-  function () {
-    alert('Unable to find your location');
   }
-);
+
+  _showForm() {}
+
+  _toggleElevationField() {}
+
+  _newWorkout() {}
+}
+
+const app = new App();
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
