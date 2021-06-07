@@ -15,7 +15,7 @@ class Workout {
   date = new Date();
 
   // Setting the id to the last 10 digits of the Date object
-  id = (new Date() + '').slice(-10);
+  id = (Date.now() + '').slice(-10);
 
   constructor(coords, distance, duration) {
     this.coords = coords;
