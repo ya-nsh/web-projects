@@ -3,14 +3,6 @@
 // prettier-ignore
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-const form = document.querySelector('.form');
-const containerWorkouts = document.querySelector('.workouts');
-const inputType = document.querySelector('.form__input--type');
-const inputCadence = document.querySelector('.form__input--cadence');
-const inputDuration = document.querySelector('.form__input--duration');
-const inputDistance = document.querySelector('.form__input--distance');
-const inputElevation = document.querySelector('.form__input--elevation');
-
 class Workout {
   date = new Date();
 
@@ -46,6 +38,14 @@ class Cycling extends Workout {
     return this.speed;
   }
 }
+
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputElevation = document.querySelector('.form__input--elevation');
 
 class App {
   #map;
@@ -102,7 +102,27 @@ class App {
 
   _newWorkout(e) {
     e.preventDefault();
-    console.log(this);
+
+    // Getting the input data from the form
+    const type = inputType.value;
+    const duration = +inputDuration.value;
+    const distance = +inputDistance.value;
+
+    // Input Data Validation
+
+    // Running workout creates running object
+    if (type === 'running') {
+      const cadence = +inputCadence.value;
+    }
+
+    // Cycling workout creates cycling object
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+    }
+    // Adding new object to workout array
+
+    // Rendering workout on the map as marker
+
     // Clearing the input fields upon submitting
     inputCadence.value =
       inputDistance.value =
