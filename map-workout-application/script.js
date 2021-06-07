@@ -11,6 +11,14 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+class Workout {
+  constructor(coords, distance, duration) {
+    this.coords = coords;
+    this.distance = distance;
+    this.duration = duration;
+  }
+}
+
 class App {
   #map;
   #mapEvent;
