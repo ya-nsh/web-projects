@@ -12,6 +12,11 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 class Workout {
+  date = new Date();
+
+  // Setting the id to the last 10 digits of the Date object
+  id = (new Date() + '').slice(-10);
+
   constructor(coords, distance, duration) {
     this.coords = coords;
     this.distance = distance;
