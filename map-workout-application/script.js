@@ -113,7 +113,11 @@ class App {
       const cadence = +inputCadence.value;
 
       // Checking if the input data is a number
-      if (!Number.isFinite(distance)) {
+      if (
+        !Number.isFinite(distance) ||
+        !Number.isFinite(duration) ||
+        !Number.isFinite(cadence)
+      ) {
         return alert('Inputs have to be numbers');
       }
     }
