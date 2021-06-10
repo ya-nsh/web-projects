@@ -103,6 +103,9 @@ class App {
   _newWorkout(e) {
     e.preventDefault();
 
+    const validInputs = (...inputs) =>
+      inputs.every(input => Number.isFinite(input));
+
     // Getting the input data from the form
     const type = inputType.value;
     const duration = +inputDuration.value;
@@ -113,11 +116,7 @@ class App {
       const cadence = +inputCadence.value;
 
       // Checking if the input data is a number
-      if (
-        !Number.isFinite(distance) ||
-        !Number.isFinite(duration) ||
-        !Number.isFinite(cadence)
-      ) {
+      if (!validInputs(distance, duration, cadence)) {
         return alert('Inputs have to be numbers');
       }
     }
@@ -125,7 +124,13 @@ class App {
     // Cycling workout creates cycling object
     if (type === 'cycling') {
       const elevation = +inputElevation.value;
+
+      // Checking if the input data is a number
+      if (!validInputs(distance, duration, elevation)) {
+        return alert('Inputs have to be numbers');
+      }
     }
+
     // Adding new object to workout array
 
     // Rendering workout on the map as marker
