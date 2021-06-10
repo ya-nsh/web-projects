@@ -108,11 +108,14 @@ class App {
     const duration = +inputDuration.value;
     const distance = +inputDistance.value;
 
-    // Input Data Validation
-
     // Running workout creates running object
     if (type === 'running') {
       const cadence = +inputCadence.value;
+
+      // Checking if the input data is a number
+      if (!Number.isFinite(distance)) {
+        return alert('Inputs have to be numbers');
+      }
     }
 
     // Cycling workout creates cycling object
