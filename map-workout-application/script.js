@@ -107,6 +107,20 @@ class App {
     inputDistance.focus(); //immediately selects the distance input field
   }
 
+  _hideForm() {
+    inputCadence.value =
+      inputDistance.value =
+      inputDuration.value =
+      inputElevation.value =
+        '';
+
+    form.style.display = 'none';
+    form.classList.add('hidden');
+    setTimeout(() => {
+      form.style.display = 'grid';
+    }, 1000);
+  }
+
   _toggleElevationField() {
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
@@ -165,12 +179,8 @@ class App {
 
     // Render workout as list on the sidebar
     this._renderWorkout(workout);
-    // Clearing the input fields upon submitting
-    inputCadence.value =
-      inputDistance.value =
-      inputDuration.value =
-      inputElevation.value =
-        '';
+    // Clearing the input fields and hiding the form upon submitting
+    this._hideForm();
   }
 
   _renderWorkoutMarker(workout) {
