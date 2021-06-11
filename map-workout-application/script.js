@@ -67,7 +67,7 @@ class App {
     this._getPosition();
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
-    containerWorkouts.addEventListener('click', this._moveToPopup);
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -248,7 +248,17 @@ class App {
     form.insertAdjacentHTML('afterend', html);
   }
 
-  _moveToPopup(){
+  _moveToPopup(e) {
+    const workoutElement = e.target.closest('.workout');
+    // Guard Clause
+    if (!workoutElement) {
+      return;
+    }
+
+    const workout = this.#workouts.find(
+      work => work.id === workoutElement.dataset.id
+    );
+
     
   }
 }
