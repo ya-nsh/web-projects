@@ -259,7 +259,12 @@ class App {
       work => work.id === workoutElement.dataset.id
     );
 
-    
+    this.#map.setView(workout.coords, 14, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
 
