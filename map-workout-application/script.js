@@ -152,8 +152,10 @@ class App {
     console.log(workout);
 
     // Rendering workout on the map as marker
-    this.renderWorkoutMarker(workout);
+    this._renderWorkoutMarker(workout);
 
+    // Render workout as list on the sidebar
+    this._renderWorkout(workout);
     // Clearing the input fields upon submitting
     inputCadence.value =
       inputDistance.value =
@@ -162,7 +164,7 @@ class App {
         '';
   }
 
-  renderWorkoutMarker(workout) {
+  _renderWorkoutMarker(workout) {
     L.marker(workout.coords)
       .addTo(this.#map)
 
@@ -175,9 +177,11 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent("Workout")
+      .setPopupContent('Workout')
       .openPopup();
   }
+
+  _renderWorkout(workout) {}
 }
 
 const app = new App();
