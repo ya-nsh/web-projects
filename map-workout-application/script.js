@@ -281,7 +281,13 @@ class App {
     console.log(localData);
 
     // Guard clause
-    if (!data) return;
+    if (!localData) return;
+
+    this.#workouts = localData;
+
+    this.#workouts.forEach(activity => {
+      this._renderWorkout(activity);
+    });
   }
 }
 
