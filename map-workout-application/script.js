@@ -68,6 +68,9 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+
+    // Getting data from local storage
+    this._getLocalStorage();
   }
 
   _getPosition() {
@@ -272,6 +275,9 @@ class App {
 
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+  _getLocalStorage(){
+    
   }
 }
 
