@@ -88,8 +88,6 @@ class App {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    console.log(latitude, longitude);
-    console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
     let coords = [latitude, longitude];
 
     this.#map = L.map('map').setView(coords, 14);
@@ -101,6 +99,10 @@ class App {
 
     // Adding the event listener of leaflet library.
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workouts.forEach(activity => {
+      this._renderWorkoutMarker(activity);
+    });
   }
 
   _showForm(mapE) {
@@ -174,7 +176,6 @@ class App {
 
     // Adding new object to workout array
     this.#workouts.push(workout);
-    console.log(workout);
 
     // Rendering workout on the map as marker
     this._renderWorkoutMarker(workout);
@@ -278,7 +279,6 @@ class App {
   }
   _getLocalStorage() {
     const localData = JSON.parse(localStorage.getItem('workouts'));
-    console.log(localData);
 
     // Guard clause
     if (!localData) return;
