@@ -276,8 +276,12 @@ class App {
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
-  _getLocalStorage(){
-    
+  _getLocalStorage() {
+    const localData = JSON.parse(localStorage.getItem('workouts'));
+    console.log(localData);
+
+    // Guard clause
+    if (!data) return;
   }
 }
 
