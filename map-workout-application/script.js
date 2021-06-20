@@ -180,6 +180,9 @@ class App {
     this._renderWorkout(workout);
     // Clearing the input fields and hiding the form upon submitting
     this._hideForm();
+
+    // Setting up local storage
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -265,6 +268,10 @@ class App {
         duration: 1,
       },
     });
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
 }
 
