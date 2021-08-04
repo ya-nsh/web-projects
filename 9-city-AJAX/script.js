@@ -6,6 +6,11 @@ const endpoint =
 
 const values = [];
 
+// Convert numbers with commas
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 fetch(endpoint)
   .then((res) => res.json())
   .then((data) => values.push(...data));
@@ -21,10 +26,23 @@ function displayWord() {
   const matchArray = findWord(this.value, values);
   const html = matchArray
     .map((place) => {
+      // highlighting city name
+      const findRegex = new RegExp(this.value, 'ig');
+      const cityName = place.city.replace(
+        findRegex,
+        `<span class="hl">${this.value}</span>`
+      );
+
+      // highlighting state name
+      const stateName = place.state.replace(
+        findRegex,
+        `<span class="hl">${this.value}</span>`
+      );
+
       return `
       <li>  
-        <span class="name">${place.city}, ${place.state}</span>
-        <span class="population">${place.population}</span>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
     </li>
    `;
     })
