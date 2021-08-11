@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -14,10 +15,11 @@ function App() {
     e.preventDefault();
     console.log(input);
     const todo = input.trim();
-    if (todo) {
-      setTodos([...todos, todo]);
-      console.log(todos);
-    }
+
+    setTodos([...todos, todo]);
+    console.log(todos);
+
+    setInput('');
   };
 
   return (
@@ -25,10 +27,28 @@ function App() {
       <h1>Hello</h1>
 
       <form>
-        <input value={input} onChange={(e) => setInput(e.target.value)} />
-        <button type="submit" onClick={submitVal}>
+        <FormControl>
+          <InputLabel>Enter a todo item</InputLabel>
+          <Input value={input} onChange={(e) => setInput(e.target.value)} />
+        </FormControl>
+
+        <Button
+          type="submit"
+          disabled={input.trim() ? false : true}
+          onClick={submitVal}
+          variant="contained"
+          color="primary"
+          style={{
+            margin: '20px',
+            borderRadius: '10px',
+            fontSize: '1rem'
+          }}
+        >
           Add todo
-        </button>
+        </Button>
+        {/* <button type="submit" onClick={submitVal}>
+          Add todo
+        </button> */}
       </form>
 
       <ul>
