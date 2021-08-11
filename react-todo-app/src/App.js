@@ -1,23 +1,27 @@
 import './App.css';
-import React, { useState } from 'react';
+import db from './firebase';
+import React, { useEffect, useState } from 'react';
+import Todo from './Todo';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 
 function App() {
-  const [todos, setTodos] = useState([
-    'Finish Assignment',
-    'Create a grocery list',
-    'Work on the project'
-  ]);
-
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
 
-  const submitVal = (e) => {
-    e.preventDefault();
-    console.log(input);
-    const todo = input.trim();
+  // Upon loading, this will load all todos from firebase
+  useEffect(() => {
+    db.collection('todos').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(doc => doc.data().todo));
+    });
+  }, []);
 
-    setTodos([...todos, todo]);
-    console.log(todos);
+  const submitVal = e => {
+    e.preventDefault();
+
+    //adding todos to firebase
+    db.collection('todos').add({ todo: input.trim() });
+
+    // setTodos([...todos, input.trim()]);
 
     setInput('');
   };
@@ -29,7 +33,7 @@ function App() {
       <form>
         <FormControl>
           <InputLabel>Enter a todo item</InputLabel>
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
+          <Input value={input} onChange={e => setInput(e.target.value)} />
         </FormControl>
 
         <Button
@@ -46,14 +50,11 @@ function App() {
         >
           Add todo
         </Button>
-        {/* <button type="submit" onClick={submitVal}>
-          Add todo
-        </button> */}
       </form>
 
       <ul>
-        {todos.map((todo) => (
-          <li>{todo}</li>
+        {todos.map(todo => (
+          <Todo text={todo} />
         ))}
       </ul>
     </div>
