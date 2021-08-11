@@ -1,5 +1,6 @@
 import './App.css';
 import db from './firebase';
+import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import Todo from './Todo';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
@@ -10,16 +11,21 @@ function App() {
 
   // Upon loading, this will load all todos from firebase
   useEffect(() => {
-    db.collection('todos').onSnapshot(snapshot => {
-      setTodos(snapshot.docs.map(doc => doc.data().todo));
-    });
+    db.collection('todos')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot(snapshot => {
+        setTodos(snapshot.docs.map(doc => doc.data().todo));
+      });
   }, []);
 
   const submitVal = e => {
     e.preventDefault();
 
     //adding todos to firebase
-    db.collection('todos').add({ todo: input.trim() });
+    db.collection('todos').add({
+      todo: input.trim(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
 
     // setTodos([...todos, input.trim()]);
 
@@ -28,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <h1>Todo App</h1>
 
       <form>
         <FormControl>
