@@ -3,13 +3,13 @@
 import firebase from 'firebase';
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: 'AIzaSyCChV2NhCxPe-ec89L-_w5ZyF-YIil_iW8',
-  authDomain: 'react-todo-app-7710a.firebaseapp.com',
-  projectId: 'react-todo-app-7710a',
-  storageBucket: 'react-todo-app-7710a.appspot.com',
+  apiKey: 'XXXXXXXXXXXXXXXXXX-XXXXXXXXX-XXXXXXXXXXX-XXXXXXXXXXX',
+  authDomain: 'XXXXXXXXXXXXXXX-todo-app-XXXXXXXXXX.XXXXXXXXXXX.com',
+  projectId: 'XXXXXXXXXXXX-todo-app-7710a',
+  storageBucket: 'XXXXXXXXX-XXXXXXXXXXX-app-7710a.XXXXXXXXXX.com',
   messagingSenderId: '156601623176',
-  appId: '1:156601623176:web:80bfae1e97b6de7602b53d',
-  measurementId: 'G-D7JSKJRRZ7'
+  appId: '1:XXXXXXXXXXXXX:web:XXXXXXXXXXXX',
+  measurementId: 'XXXXXXXX-XXXXXXXXXXX'
 });
 
 const db = firebaseApp.firestore();

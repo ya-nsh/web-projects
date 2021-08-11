@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todo App</h1>
+      <h1 style={{ marginBottom: '150px' }}>Todo App</h1>
 
       <form>
         <FormControl>
