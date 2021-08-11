@@ -1,6 +1,9 @@
-import React from 'react';
 import './Todo.css';
+import React from 'react';
+import db from './firebase';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {
+  Button,
   List,
   ListItem,
   ListItemAvatar,
@@ -12,8 +15,12 @@ export default function Todo(props) {
     <List className="todo__lists">
       <ListItem>
         <ListItemAvatar>🎉</ListItemAvatar>
-        <ListItemText primary={props.text}></ListItemText>
+        <ListItemText primary={props.text.todo}></ListItemText>
       </ListItem>
+      <DeleteIcon
+        onClick={event => db.collection('todos').doc(props.text.id).delete()}
+        style={{ cursor: 'pointer', position: 'relative', bottom: '40px' }}
+      />
     </List>
   );
 }
