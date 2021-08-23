@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import './App.css';
 import Post from './Post';
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      username: 'louis',
+      caption: 'new from paris',
+      imageUrl: 'https://i.redd.it/9hiqbkvghwi71.jpg'
+    },
+    {
+      username: 'mao',
+      caption: 'Shanghai heights',
+      imageUrl: 'https://i.imgur.com/VFFbr9k.jpeg'
+    }
+  ]);
+
   return (
     <div className="app">
       <div className="app__header">
@@ -12,21 +26,15 @@ function App() {
         />
       </div>
       <h1>Hello</h1>
-      <Post
-        username="louis"
-        caption="new from paris"
-        imageUrl="https://i.redd.it/9hiqbkvghwi71.jpg"
-      />
-      <Post
-        username="louis"
-        caption="new from paris"
-        imageUrl="https://i.imgur.com/VFFbr9k.jpeg"
-      />
-      <Post
-        username="louis"
-        caption="new from paris"
-        imageUrl="https://i.redd.it/9hiqbkvghwi71.jpg"
-      />
+      {posts.map(post => {
+        return (
+          <Post
+            username={post.username}
+            caption={post.caption}
+            imageUrl={post.imageUrl}
+          />
+        );
+      })}
     </div>
   );
 }
