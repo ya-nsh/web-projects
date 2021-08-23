@@ -1,4 +1,5 @@
 import './App.css';
+import Post from './Post';
 
 function App() {
   return (
@@ -10,8 +11,22 @@ function App() {
           className="app__headerImage"
         />
       </div>
-
       <h1>Hello</h1>
+      <Post
+        username="louis"
+        caption="new from paris"
+        imageUrl="https://i.redd.it/9hiqbkvghwi71.jpg"
+      />
+      <Post
+        username="louis"
+        caption="new from paris"
+        imageUrl="https://i.imgur.com/VFFbr9k.jpeg"
+      />
+      <Post
+        username="louis"
+        caption="new from paris"
+        imageUrl="https://i.redd.it/9hiqbkvghwi71.jpg"
+      />
     </div>
   );
 }

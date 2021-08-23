@@ -1,0 +1,29 @@
+.post {
+  max-width: 30rem;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-bottom: 39px;
+}
+
+.post__image {
+  width: 100%;
+  object-fit: contain;
+  border: 1px 0 1px 0 solid #ccc;
+}
+
+.post__text {
+  font-weight: normal;
+  padding: 20px;
+  font-family: source sans pro;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 15px;
+}
+.post__avatar {
+  margin-right: 12px;
+}

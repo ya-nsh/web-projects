@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
 * {
   margin: 0;
 }
@@ -7,7 +9,7 @@
   height: 100vh;
 }
 
-.app__headerImage {
+.app__header {
   /* Keeps the aspect ratio even if the container is stretched */
   object-fit: contain;
   background-color: white;
