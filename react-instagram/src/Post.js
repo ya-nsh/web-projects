@@ -22,7 +22,7 @@ export default function (props) {
       />
 
       <h4 className="post__text">
-        <strong>Mr west</strong> {props.caption}
+        <strong>{props.username}</strong> {props.caption}
       </h4>
     </div>
   );
