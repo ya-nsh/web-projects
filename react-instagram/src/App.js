@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Post from './Post';
+import { db } from './firebase';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -15,6 +16,12 @@ function App() {
       imageUrl: 'https://i.imgur.com/VFFbr9k.jpeg'
     }
   ]);
+
+  useEffect(() => {
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data()));
+    });
+  }, [posts]);
 
   return (
     <div className="app">
