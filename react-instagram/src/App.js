@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { db } from './firebase';
 import { Button } from '@material-ui/core';
+import Input from '@material-ui/core/Input';
 
 function getModalStyle() {
   const top = 50;
@@ -36,6 +37,9 @@ function App() {
 
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
@@ -62,7 +66,24 @@ function App() {
             className="app__headerImage"
             style={{ margin: 'auto', display: 'block' }}
           />
-          <h2>I am a modal</h2>
+          <Input
+            placeholder="text"
+            type="username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="email"
+            type="text"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
         </div>
       </Modal>
 
