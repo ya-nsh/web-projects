@@ -85,6 +85,16 @@ function App() {
       .catch(error => alert(error.message));
   };
 
+  const signIn = e => {
+    e.preventDefault();
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => alert(error.message));
+
+    setOpenSignIn(false);
+  };
+
   return (
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -97,8 +107,8 @@ function App() {
               style={{ margin: 'auto', display: 'block' }}
             />
             <Input
-              placeholder="text"
-              type="username"
+              placeholder="username"
+              type="text"
               value={username}
               onChange={e => setUsername(e.target.value)}
             />
@@ -121,6 +131,35 @@ function App() {
         </div>
       </Modal>
 
+      <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app__signup">
+            <img
+              src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+              alt="Instagram Logo"
+              className="app__headerImage"
+              style={{ margin: 'auto', display: 'block' }}
+            />
+
+            <Input
+              placeholder="email"
+              type="text"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <Button type="submit" onClick={signIn}>
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Modal>
+
       <div className="app__header">
         <img
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
@@ -132,7 +171,7 @@ function App() {
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ) : (
         <div className="app__loginContainer">
-          <Button onClick={() => setOpen(true)}>Sign In</Button>
+          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
           <Button onClick={() => setOpen(true)}>Sign Up</Button>
         </div>
       )}
