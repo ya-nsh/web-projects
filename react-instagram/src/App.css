@@ -10,14 +10,30 @@
 }
 
 .app__header {
-  /* Keeps the aspect ratio even if the container is stretched */
   object-fit: contain;
   background-color: white;
   border-bottom: 2px solid lightgray;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .app__signup {
   display: flex;
   flex-direction: column;
+}
+
+.app__headerImage {
+  object-fit: contain;
+}
+
+.app__posts {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

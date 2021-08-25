@@ -1,0 +1,13 @@
+.imageupload {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+  margin: auto;
+  width: 50%;
+  /* background-color: white;
+  border-top: 2px solid lightgray; */
+}
+.imageupload__progress {
+  width: 100%;
+}

@@ -51,6 +51,7 @@ function App() {
 
         if (authUser.displayName) {
           // No need to update username
+          setUser(authUser);
         }
       } else {
         // user has logged out
@@ -95,17 +96,12 @@ function App() {
       .signInWithEmailAndPassword(email, password)
       .catch(error => alert(error.message));
 
+    // Close modal
     setOpenSignIn(false);
   };
 
   return (
     <div className="app">
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Please sign in to upload</h3>
-      )}
-
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -175,27 +171,44 @@ function App() {
           alt="Instagram Logo"
           className="app__headerImage"
         />
-      </div>
-      {user ? (
-        <Button onClick={() => auth.signOut()}>Logout</Button>
-      ) : (
-        <div className="app__loginContainer">
-          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          <Button onClick={() => setOpen(true)}>Sign Up</Button>
-        </div>
-      )}
 
-      <h1>Hello</h1>
-      {posts.map(({ id, post }) => {
-        return (
-          <Post
-            key={id}
-            username={post.username}
-            caption={post.caption}
-            imageUrl={post.imageUrl}
-          />
-        );
-      })}
+        {user ? (
+          <Button onClick={() => auth.signOut()}>Logout</Button>
+        ) : (
+          <div className="app__loginContainer">
+            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+            <Button onClick={() => setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
+      </div>
+
+      <div className="app__posts">
+        {posts.map(({ id, post }) => {
+          return (
+            <Post
+              key={id}
+              user={user}
+              username={post.username}
+              postId={id}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+            />
+          );
+        })}
+      </div>
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3
+          style={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          Please sign in to upload
+        </h3>
+      )}
     </div>
   );
 }
