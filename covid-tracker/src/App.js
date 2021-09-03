@@ -2,12 +2,15 @@ import './App.css';
 import FormControl from '@material-ui/core/FormControl';
 import { MenuItem, Select } from '@material-ui/core';
 import { useState, useEffect } from 'react';
+import Stats from './Stats';
+import Map from './Map';
 
 function App() {
-  const [countries, setCountries] = useState(['S']);
+  const [countries, setCountries] = useState([]);
+  const [countryChoice, setCountryChoice] = useState('worldwide');
 
   useEffect(() => {
-    const allCountries = async () => {
+    const fetchAllCountries = async () => {
       await fetch('https://disease.sh/v3/covid-19/countries')
         .then(res => res.json())
         .then(data => {
@@ -15,24 +18,37 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2
           }));
+
+          setCountries(countries);
         });
     };
+    fetchAllCountries();
   }, []);
+
   return (
     <div className="app">
       <div className="app__header">
         <h1>Track Covid 19</h1>
         <FormControl className="app__dropdown">
-          <Select>
-            {/* <MenuItem value="World">World</MenuItem>
-            <MenuItem value="Option 2">Option 2</MenuItem>
-            <MenuItem value="Option 3">Option 3</MenuItem> */}
+          <Select
+            value={countryChoice}
+            onChange={e => setCountryChoice(e.target.value)}
+          >
+            <MenuItem value="worldwide">Worldwide</MenuItem>
+
             {countries.map(country => (
-              <MenuItem value={country}>{country}</MenuItem>
+              <MenuItem value={country.value}>{country.name}</MenuItem>
             ))}
           </Select>
         </FormControl>
       </div>
+
+      <div className="app__stats">
+        <Stats title="Covid-19 Cases" cases={20} total={2300} />
+        <Stats title="Recovered" cases={20} total={2300} />
+        <Stats title="Deaths" cases={20} total={2300} />
+      </div>
+      <Map />
     </div>
   );
 }

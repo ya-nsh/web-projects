@@ -8,3 +8,13 @@
   align-items: center;
   margin-bottom: 10px;
 }
+
+.app__stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  background-color: #ecd0d0;
+}
