@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
 import Stats from './Stats';
 import Map from './Map';
 import Table from './Table';
+import { sortData } from './utils';
+import LineGraph from './LineGraph';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [casesType, setCasesType] = useState('cases');
   const [countryData, setCountryData] = useState({});
   const [countryChoice, setCountryChoice] = useState('worldwide');
 
@@ -30,8 +33,10 @@ function App() {
             value: country.countryInfo.iso2
           }));
 
+          const sortedData = sortData(data);
+
+          setTableData(sortedData);
           setCountries(countries);
-          setTableData(data);
         });
     };
     fetchAllCountries();
@@ -103,6 +108,7 @@ function App() {
           <h3 style={{ textAlign: 'center' }}>Live cases by country</h3>
           <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>
