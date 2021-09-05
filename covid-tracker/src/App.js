@@ -100,7 +100,7 @@ function App() {
 
       <Card className="app__right">
         <CardContent>
-          <h3>Live cases by country</h3>
+          <h3 style={{ textAlign: 'center' }}>Live cases by country</h3>
           <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
         </CardContent>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Table.css';
 
 export default function Table({ countries }) {
   return (
@@ -8,7 +9,10 @@ export default function Table({ countries }) {
           <td>{country}</td>
           <td>
             {' '}
-            <strong> {cases}</strong>{' '}
+            <strong>
+              {' '}
+              {new Intl.NumberFormat('en-US').format(cases)}
+            </strong>{' '}
           </td>
         </tr>
       ))}
