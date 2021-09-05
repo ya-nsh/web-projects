@@ -7,7 +7,16 @@ import Map from './Map';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [countryData, setCountryData] = useState({});
   const [countryChoice, setCountryChoice] = useState('worldwide');
+
+  useEffect(() => {
+    fetch('https://disease.sh/v3/covid-19/all')
+      .then(res => res.json())
+      .then(data => {
+        setCountryData(data);
+      });
+  });
 
   useEffect(() => {
     const fetchAllCountries = async () => {
@@ -33,7 +42,22 @@ function App() {
           <FormControl className="app__dropdown">
             <Select
               value={countryChoice}
-              onChange={e => setCountryChoice(e.target.value)}
+              variant="outlined"
+              onChange={async e => {
+                const url =
+                  countryChoice === 'worldwide'
+                    ? 'https://disease.sh/v3/covid-19/all'
+                    : `https://disease.sh/v3/covid-19/countries/${countryChoice}`;
+                await fetch(url)
+                  .then(res => res.json())
+                  .then(data => {
+                    // Updating the input field
+                    setCountryChoice(e.target.value);
+
+                    // Updating the data
+                    setCountryData(data);
+                  });
+              }}
             >
               <MenuItem value="worldwide">Worldwide</MenuItem>
 
@@ -45,9 +69,21 @@ function App() {
         </div>
 
         <div className="app__stats">
-          <Stats title="Covid-19 Cases" cases={20} total={2300} />
-          <Stats title="Recovered" cases={20} total={2300} />
-          <Stats title="Deaths" cases={20} total={2300} />
+          <Stats
+            title="Covid-19 Cases"
+            cases={countryData.todayCases}
+            total={countryData.cases}
+          />
+          <Stats
+            title="Recovered"
+            cases={countryData.todayRecovered}
+            total={countryData.recovered}
+          />
+          <Stats
+            title="Deaths"
+            cases={countryData.todayDeaths}
+            total={countryData.deaths}
+          />
         </div>
         <Map />
       </div>
