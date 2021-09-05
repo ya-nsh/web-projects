@@ -4,9 +4,11 @@ import { Card, CardContent, MenuItem, Select } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import Stats from './Stats';
 import Map from './Map';
+import Table from './Table';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [tableData, setTableData] = useState([]);
   const [countryData, setCountryData] = useState({});
   const [countryChoice, setCountryChoice] = useState('worldwide');
 
@@ -16,7 +18,7 @@ function App() {
       .then(data => {
         setCountryData(data);
       });
-  });
+  }, []);
 
   useEffect(() => {
     const fetchAllCountries = async () => {
@@ -29,10 +31,26 @@ function App() {
           }));
 
           setCountries(countries);
+          setTableData(data);
         });
     };
     fetchAllCountries();
   }, []);
+
+  const onCountryChange = async e => {
+    const countryCode = e.target.value;
+
+    const url =
+      countryCode === 'worldwide'
+        ? 'https://disease.sh/v3/covid-19/all'
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setCountryChoice(countryCode);
+        setCountryData(data);
+      });
+  };
 
   return (
     <div className="app">
@@ -43,21 +61,7 @@ function App() {
             <Select
               value={countryChoice}
               variant="outlined"
-              onChange={async e => {
-                const url =
-                  countryChoice === 'worldwide'
-                    ? 'https://disease.sh/v3/covid-19/all'
-                    : `https://disease.sh/v3/covid-19/countries/${countryChoice}`;
-                await fetch(url)
-                  .then(res => res.json())
-                  .then(data => {
-                    // Updating the input field
-                    setCountryChoice(e.target.value);
-
-                    // Updating the data
-                    setCountryData(data);
-                  });
-              }}
+              onChange={onCountryChange}
             >
               <MenuItem value="worldwide">Worldwide</MenuItem>
 
@@ -71,18 +75,24 @@ function App() {
         <div className="app__stats">
           <Stats
             title="Covid-19 Cases"
-            cases={countryData.todayCases}
-            total={countryData.cases}
+            cases={new Intl.NumberFormat('en-US').format(
+              countryData.todayCases
+            )}
+            total={new Intl.NumberFormat('en-US').format(countryData.cases)}
           />
           <Stats
             title="Recovered"
-            cases={countryData.todayRecovered}
-            total={countryData.recovered}
+            cases={new Intl.NumberFormat('en-US').format(
+              countryData.todayRecovered
+            )}
+            total={new Intl.NumberFormat('en-US').format(countryData.recovered)}
           />
           <Stats
             title="Deaths"
-            cases={countryData.todayDeaths}
-            total={countryData.deaths}
+            cases={new Intl.NumberFormat('en-US').format(
+              countryData.todayDeaths
+            )}
+            total={new Intl.NumberFormat('en-US').format(countryData.deaths)}
           />
         </div>
         <Map />
@@ -91,6 +101,7 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live cases by country</h3>
+          <Table countries={tableData} />
           <h3>Worldwide new cases</h3>
         </CardContent>
       </Card>
