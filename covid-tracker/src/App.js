@@ -1,19 +1,25 @@
 import './App.css';
+import numeral from 'numeral';
 import FormControl from '@material-ui/core/FormControl';
 import { Card, CardContent, MenuItem, Select } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import Stats from './Stats';
 import Map from './Map';
+import 'leaflet/dist/leaflet.css';
 import Table from './Table';
-import { sortData } from './utils';
+import { prettyPrintStat, sortData } from './utils';
 import LineGraph from './LineGraph';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [countryInfo, setCountryInfo] = useState({});
+  const [mapCountries, setMapCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState('cases');
   const [countryData, setCountryData] = useState({});
   const [countryChoice, setCountryChoice] = useState('worldwide');
+  const [mapCenter, setMapCenter] = useState({ lat: 51.5074, lng: 0.1278 });
+  const [mapZoom, setMapZoom] = useState(4);
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
@@ -34,7 +40,7 @@ function App() {
           }));
 
           const sortedData = sortData(data);
-
+          setMapCountries(data);
           setTableData(sortedData);
           setCountries(countries);
         });
@@ -54,6 +60,8 @@ function App() {
       .then(data => {
         setCountryChoice(countryCode);
         setCountryData(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
       });
   };
 
@@ -79,20 +87,30 @@ function App() {
 
         <div className="app__stats">
           <Stats
+            isRed
+            onClick={e => setCasesType('cases')}
             title="Covid-19 Cases"
+            active={casesType === 'cases'}
             cases={new Intl.NumberFormat('en-US').format(
               countryData.todayCases
             )}
             total={new Intl.NumberFormat('en-US').format(countryData.cases)}
           />
+
           <Stats
+            onClick={e => setCasesType('recovered')}
+            active={casesType === 'recovered'}
             title="Recovered"
             cases={new Intl.NumberFormat('en-US').format(
               countryData.todayRecovered
             )}
             total={new Intl.NumberFormat('en-US').format(countryData.recovered)}
           />
+
           <Stats
+            isRed
+            onClick={e => setCasesType('deaths')}
+            active={casesType === 'deaths'}
             title="Deaths"
             cases={new Intl.NumberFormat('en-US').format(
               countryData.todayDeaths
@@ -100,7 +118,12 @@ function App() {
             total={new Intl.NumberFormat('en-US').format(countryData.deaths)}
           />
         </div>
-        <Map />
+        <Map
+          countries={mapCountries}
+          casesType={casesType}
+          center={mapCenter}
+          zoom={mapZoom}
+        />
       </div>
 
       <Card className="app__right">

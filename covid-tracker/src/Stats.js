@@ -1,16 +1,32 @@
 import { Card, CardContent, Typography } from '@material-ui/core';
 import React from 'react';
+import './Stats.css';
 
-export default function Stats({ title, cases, total }) {
+export default function Stats({
+  title,
+  cases,
+  total,
+  active,
+  isRed,
+  ...props
+}) {
   return (
-    <Card className="stats">
+    <Card
+      onClick={props.onClick}
+      className={`stats ${active && 'stats--selected'} ${
+        isRed && 'stats--red'
+      }`}
+    >
       <CardContent>
-        <Typography className="stats__title" color="textSecondary">
+        <Typography color="textSecondary" gutterBottom>
           {title}
         </Typography>
-        <h3 className="stats__cases">{cases}</h3>
+        <h2 className={`stats__cases ${!isRed && 'stats__cases--green'}`}>
+          {cases}
+        </h2>
+
         <Typography className="stats__total" color="textSecondary">
-          <strong>{total} Total </strong>
+          {total} Total
         </Typography>
       </CardContent>
     </Card>
