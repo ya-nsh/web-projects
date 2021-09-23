@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +18,34 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.notes-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note {
+  flex: 1;
+  background-color: rgb(235, 235, 68);
+  border-radius: 11px;
+  margin: 1.1rem;
+  padding: 1.2rem;
+  min-height: 10rem;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: lato;
+}
+
+.note__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
