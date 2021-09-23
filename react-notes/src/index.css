@@ -49,3 +49,7 @@ code {
   justify-content: space-between;
   align-items: center;
 }
+
+.add {
+  background-color: rgba(17, 230, 230, 0.534);
+}

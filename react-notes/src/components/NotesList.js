@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Note from './Note';
+import AddNote from './AddNote';
 
-export default function NotesList() {
-  const [notes, setNotes] = useState([]);
+export default function NotesList(props) {
   return (
     <div className="notes-list">
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
-      <Note />
+      {props.content.map(note => (
+        <Note id={note.id} text={note.text} date={note.date} />
+      ))}
+      <AddNote />
     </div>
   );
 }
