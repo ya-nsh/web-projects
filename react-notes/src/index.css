@@ -51,5 +51,29 @@ code {
 }
 
 .add {
-  background-color: rgba(17, 230, 230, 0.534);
+  background-color: rgb(13, 250, 171);
+}
+
+textarea {
+  background-color: rgb(13, 250, 171);
+  border: none;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.note--save {
+  background-color: white;
+  border-radius: 12px;
+  border: none;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+
+.note--save:hover {
+  box-shadow: 0 0 3px black;
+  cursor: pointer;
+  background-color: whitesmoke;
 }
