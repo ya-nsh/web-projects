@@ -8,7 +8,7 @@ export default function NotesList(props) {
       {props.content.map(note => (
         <Note id={note.id} text={note.text} date={note.date} />
       ))}
-      <AddNote />
+      <AddNote handleAddNote={props.handleAddNote} />
     </div>
   );
 }

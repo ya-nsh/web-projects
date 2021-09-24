@@ -21,9 +21,13 @@ export default function App() {
     }
   ]);
 
+  const addNote = text => {
+    console.log(text);
+  };
+
   return (
     <div className="App">
-      <NotesList content={notes} />
+      <NotesList content={notes} handleAddNote={addNote} />
     </div>
   );
 }
