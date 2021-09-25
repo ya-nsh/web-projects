@@ -38,10 +38,12 @@ code {
   padding: 1.2rem;
   min-height: 10rem;
   min-width: 20rem;
+  white-space: pre-wrap;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: lato;
+  overflow-wrap: break-word;
 }
 
 .note__footer {
