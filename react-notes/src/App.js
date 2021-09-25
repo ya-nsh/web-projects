@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NotesList from './components/NotesList';
 import { nanoid } from 'nanoid';
 import Search from './components/Search';
+import Header from './components/Header';
 
 export default function App() {
   const [notes, setNotes] = useState([
@@ -23,6 +24,8 @@ export default function App() {
   ]);
 
   const [searchText, setSearchText] = useState('');
+  const [colorChange, setColorChange] = useState(false);
+
   const addNote = text => {
     const date = new Date().toLocaleDateString();
     const newNote = {
@@ -40,15 +43,18 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Search handleSearch={setSearchText} />
-      <NotesList
-        content={notes.filter(note =>
-          note.text.toLowerCase().includes(searchText)
-        )}
-        handleAddNote={addNote}
-        handleDeleteNote={deleteNote}
-      />
+    <div className={`${colorChange && 'color-change'}`}>
+      <div className="App">
+        <Header handleColorChange={setColorChange} />
+        <Search handleSearch={setSearchText} />
+        <NotesList
+          content={notes.filter(note =>
+            note.text.toLowerCase().includes(searchText)
+          )}
+          handleAddNote={addNote}
+          handleDeleteNote={deleteNote}
+        />
+      </div>
     </div>
   );
 }

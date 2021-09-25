@@ -48,6 +48,84 @@ code {
   max-width: 1000px;
   margin: 0 auto;
   height: 100vh;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-top: 2rem; */
+  padding: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  background-image: linear-gradient(
+    45deg,
+    #ca4246 16.666%,
+    #e16541 16.666%,
+    #e16541 33.333%,
+    #f18f43 33.333%,
+    #f18f43 50%,
+    #8b9862 50%,
+    #8b9862 66.666%,
+    #476098 66.666%,
+    #476098 83.333%,
+    #a7489b 83.333%
+  );
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+.header h1:hover {
+  animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+  cursor: pointer;
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+  0% {
+    background-size: 650%;
+  }
+  40% {
+    background-size: 650%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+@keyframes rainbow-text-simple-animation {
+  0% {
+    background-size: 100%;
+  }
+  80% {
+    background-size: 650%;
+  }
+  100% {
+    background-size: 650%;
+  }
+}
+
+.color-change {
+  background-color: black;
+  /* background: #0f2027;
+  background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027); */
+}
+
+.color-change h1 {
+  color: white;
+}
+
+.color-change input::placeholder {
+  color: rgba(255, 255, 255, 0.425);
 }
 
 .notes-list {
@@ -57,7 +135,6 @@ code {
 
 .note {
   flex: 1;
-
   border-radius: 11px;
   margin: 1.1rem;
   padding: 1.2rem;
@@ -69,13 +146,12 @@ code {
   justify-content: space-between;
   font-family: lato;
   overflow-wrap: break-word;
-
   background: rgba(255, 247, 14, 0.623);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.74);
 }
 
 .note__footer {
