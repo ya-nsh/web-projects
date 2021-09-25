@@ -22,7 +22,14 @@ export default function App() {
   ]);
 
   const addNote = text => {
-    console.log(text);
+    const date = new Date().toLocaleDateString();
+    const newNote = {
+      id: nanoid(),
+      text,
+      date
+    };
+
+    setNotes([...notes, newNote]);
   };
 
   return (

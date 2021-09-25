@@ -9,7 +9,11 @@ export default function AddNote({ handleAddNote }) {
   };
 
   const saveHandler = e => {
-    handleAddNote(text);
+    if (text.trim().length > 0) {
+      handleAddNote(text);
+    }
+
+    setText('');
   };
 
   return (
