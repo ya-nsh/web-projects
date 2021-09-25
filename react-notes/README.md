@@ -10,3 +10,7 @@ A note application built using React with Dark mode support.
 - cd into `react-notes`
 - Run npm i
 - After the installation, type in `npm start` command.
+
+## Live Site
+
+https://react-notes-dark.netlify.app/
