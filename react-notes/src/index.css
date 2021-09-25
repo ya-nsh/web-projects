@@ -13,6 +13,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: hsla(211, 66%, 87%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(211, 66%, 87%, 1) 0%,
+    hsla(348, 67%, 88%, 1) 50%,
+    hsla(272, 26%, 72%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(211, 66%, 87%, 1) 0%,
+    hsla(348, 67%, 88%, 1) 50%,
+    hsla(272, 26%, 72%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(211, 66%, 87%, 1) 0%,
+    hsla(348, 67%, 88%, 1) 50%,
+    hsla(272, 26%, 72%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C9DEF4", endColorstr="#F5CCD4", GradientType=1 );
 }
 
 code {
@@ -23,6 +47,7 @@ code {
 .App {
   max-width: 1000px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .notes-list {
@@ -32,7 +57,7 @@ code {
 
 .note {
   flex: 1;
-  background-color: rgb(235, 235, 68);
+
   border-radius: 11px;
   margin: 1.1rem;
   padding: 1.2rem;
@@ -44,6 +69,13 @@ code {
   justify-content: space-between;
   font-family: lato;
   overflow-wrap: break-word;
+
+  background: rgba(255, 247, 14, 0.623);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .note__footer {
@@ -53,11 +85,17 @@ code {
 }
 
 .add {
-  background-color: rgb(13, 250, 171);
+  background: rgba(125, 211, 33, 0.753);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 textarea {
-  background-color: rgb(13, 250, 171);
+  background: rgba(125, 211, 33, 0);
+
   border: none;
   resize: none;
 }
@@ -78,4 +116,36 @@ textarea:focus {
   box-shadow: 0 0 3px black;
   cursor: pointer;
   background-color: whitesmoke;
+}
+
+.note__delete {
+  cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 5rem;
+  border-radius: 11px;
+  padding: 7px;
+  margin-bottom: 1.3rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.search-container input {
+  border: none;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0);
+}
+
+.search-container input:focus {
+  outline: none;
 }
