@@ -23,6 +23,11 @@ const AllStyles = createGlobalStyle`
     body{
         background-color: var(--neutral-light);
         font-size: 1.1rem;
-    }`;
+    }
+    
+    a{
+        color: white;
+    }
+    `;
 
 export default AllStyles;

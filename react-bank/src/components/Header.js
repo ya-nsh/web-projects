@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import bg from '../img/bg.svg';
 import Nav from './Nav';
+import HeaderContent from './HeaderContent';
 
 const HeaderStyle = styled.header`
   background-image: url(${bg});
@@ -18,9 +19,9 @@ const HeaderStyle = styled.header`
 export default function Header() {
   return (
     <HeaderStyle>
-      <h1>Hi</h1>
       <div className="header-content">
         <Nav />
+        <HeaderContent />
       </div>
     </HeaderStyle>
   );
