@@ -6,7 +6,7 @@ const AllStyles = createGlobalStyle`
     --accent-pink: #f44e77;
     --border-colour: #cab6f1;
     --purple-primary: #554dde;
-    --lavender-secondary: #6a6d9e; 
+    --lavender-secondary: #6a6d9e;
     --neutral-light: #f2f6ff;
     --dark-primary: #16194f;
     }
@@ -16,14 +16,12 @@ const AllStyles = createGlobalStyle`
         padding: 0;
         list-style: none;
         box-sizing: border-box;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Lato', sans-serif;
         text-decoration: none;
     }
-    
+
     body{
         background-color: var(--neutral-light);
-        
-        color: white;
         font-size: 1.1rem;
     }`;
 
