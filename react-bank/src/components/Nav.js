@@ -26,6 +26,8 @@ const NavStyled = styled.nav`
   /* Setting a gap between the navbar and the top of the viewport */
   position: relative;
   top: 0.3rem;
+
+  margin-bottom: 1.2rem;
 `;
 
 export default function Nav() {
