@@ -19,3 +19,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.linkStyle {
+  @apply text-black font-medium uppercase no-underline text-sm;
+}

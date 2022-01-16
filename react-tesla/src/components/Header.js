@@ -18,18 +18,34 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
       </div>
 
       {/* Central Links */}
-      <div>
-        <Link to="/"> Model S </Link>
-        <Link to="/"> Model 3 </Link>
-        <Link to="/"> Model X </Link>
-        <Link to="/"> Model Y </Link>
-        <Link to="/"> Solar Roof </Link>
-        <Link to="/"> Solar Panels </Link>
+      <div className="flex gap-4 invisible lg:visible">
+        <Link to="/" className="linkStyle">
+          Model S
+        </Link>
+        <Link to="/" className="linkStyle">
+          Model 3
+        </Link>
+        <Link to="/" className="linkStyle">
+          Model X
+        </Link>
+        <Link to="/" className="linkStyle">
+          Model Y
+        </Link>
+        <Link to="/" className="linkStyle">
+          Solar Roof
+        </Link>
+        <Link to="/" className="linkStyle">
+          Solar Panels
+        </Link>
       </div>
       {/* Right Links */}
-      <div className="">
-        <Link to="/"> Shop </Link>
-        <Link to="/login"> Account </Link>
+      <div className="flex gap-4 items-center linkStyle z-0 relative">
+        <Link to="/" className={isMenuOpen && 'invisible'}>
+          Shop
+        </Link>
+        <Link to="/login" className={isMenuOpen && 'invisible'}>
+          Account
+        </Link>
 
         <div
           className="inline-block"
@@ -38,10 +54,9 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
           {isMenuOpen ? (
             <CloseIcon />
           ) : (
-            <button className="card font-semibold">Menu </button>
+            <button className="card font-semibold z-10 relative">Menu</button>
           )}
         </div>
-        {/* <Link to="/"> Menu </Link> */}
       </div>
     </div>
   );

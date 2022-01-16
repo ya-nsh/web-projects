@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Header from './components/Header';
 
+import Menu from './components/Menu';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Router>
       <div className="App">
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        {isMenuOpen && <Menu />}
         {/* Header */}
         {/* HeaderBlock */}
       </div>
